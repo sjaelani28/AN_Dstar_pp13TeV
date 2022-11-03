@@ -1,28 +1,26 @@
 \section{Feed-down subtraction}
-As described in Sec.~\ref{sec:eff}, the prompt D meson production yields ${\rm
-d}N/{\rm d}\pt$ in Pb--Pb 
-collisions were obtained by subtracting the contribution of D mesons 
-from B decays with the same procedure used for the measurement of 
-the production cross sections in pp collisions~\cite{Acharya:2019mgn}.
-In detail, the feed-down contribution was estimated using 
+%The methods for B feed-down subtraction
+%As described in Sec.~\ref{sec:eff}, the prompt D meson production yields ${\rmd}N/{\rm d}\pt$ in Pb--Pb 
+%collisions were obtained by subtracting the contribution of D mesons from B decays with the same procedure used for the measurement of the production cross sections in pp collisions~\cite{Acharya:2019mgn}. In detail, 
+
+The feed-down contribution was estimated using 
 the beauty production cross section from the FONLL calculation,
 the B$\rightarrow$D decay kinematics from the EvtGen package,
 and the Monte Carlo efficiencies for feed-down D mesons. 
-For Pb--Pb collisions, 
-the FONLL feed-down cross section in pp at $\sqrt{s}=5.02~\TeV$ 
-was scaled by the average nuclear overlap function $\langle \TAA \rangle$ in
-each centrality class.
+%For Pb--Pb collisions, 
+%the FONLL feed-down cross section in pp at $\sqrt{s}=5.02~\TeV$ 
+%was scaled by the average nuclear overlap function $\langle \TAA \rangle$ in
+%each centrality class.
 Thus, omitting for brevity the symbol of the $\pt$-dependence $(\pt)$, 
 the fraction of prompt D mesons reads:
 \begin{equation}
  \label{eq:fcNbMethod}
  \begin{split}
-   f_{\rm prompt} &= 1-(N^{\rm D~feed-down~raw}/N^{\rm D~raw})=\\
-   &= 1 - \langle \TAA \rangle 
-   \cdot \left( \frac{{\rm d}^2 \sigma}{{\rm d}y \, {\rm d}\pt }
-\right)^{{\sf FONLL}} _{{\rm feed-down}} \cdot \RAA^{\rm feed-down} \cdot
+   f_{\rm prompt} &= 1-(N^{\rm D~feed-down~raw}/N^{\rm D~raw})\\
+   &= 1 -  \left( \frac{{\rm d}^2 \sigma}{{\rm d}y \, {\rm d}\pt }
+\right)^{{\sf FONLL}} _{{\rm feed-down}} \cdot
 \frac{({\rm Acc}\times\epsilon)_{\rm feed-down}\cdot\Delta y \, \Delta\pt
-\cdot {\rm BR} \cdot N_{\rm evt}  }{ N^{\rm D~raw }  / 2} \, ,
+\cdot {\rm BR} \cdot L_{\rm int}  }{ N^{\rm D~raw }  / 2} \, ,
  \end{split}
 \end{equation}
 where $({\rm Acc}\times\epsilon)_{{\rm feed-down}}$ is the 
