@@ -1,0 +1,900 @@
+\section{\Dsubs{} selections with machine learning}
+For the \Dsubs{} analysis the possibility to apply a machine learning approach to the particle candidate selection, 
+replacing the linear selections traditionally used, is explored. The objective of this study is to improve the \Dsubs{} 
+signal extraction and in particular to look for an extension of the \(\RAA{}\) measurement at low \pt{}, between 2 and 3 \GeV{}.
+
+\subsection{Introduction}
+The term \textit{machine learning} comprehends a vast landscape of algorithms which can ``learn'' to perform a task without being explicitly programmed,
+these methods are well suited for classification and regression problems. When the problem of interest consists in the discrimination between two or more classes 
+usually \textit{supervised} models are employed. \\ 
+Supervised algorithms learn how to correctly classify the data starting from a set of examples, of which the belonging class is known. This is referred as the \textit{training set}. 
+In a procedure called \textit{training}, which is different for every algorithm, the internal parameters of the model are fixed using the training set. 
+The objective of this operation is to obtain the parameters configuration that leads to the best discrimination of the training data. 
+Ideally, the model learns some general patterns which are related to the different class typologies and not to the single sample them self. 
+Therefore, after the training, the model can be employed to label unknown samples. \\
+The output of a supervised model is a \textit{score} evaluated from the instance properties, normally called \textit{features}. 
+This score is a numerical value related to the instance probability of belonging to the different classes. 
+In order to define which instances are members of a class and which of the other, it is necessary to select a \textit{threshold} value. 
+This delimiting value could be defined in relation to the analysis characteristics and requirements; e.g. the relative abundances of the two classes, 
+the background rejection or the signal selection efficiency needed. \\
+Machine learning models can apply more complex and refined selections with respect to linear cuts. In fact, they can account 
+for non-linear relations between the variables used in the discrimination. Moreover, while in the standard approach 
+a candidate must satisfy all the conditions imposed to be selected, some characteristics of a real \Dsubs{} candidate can drive an 
+high output of the machine learning algorithm even if not all of them fulfil the conditions that would be imposed with the linear selections. 
+Thus, leading to the selection of a signal candidate that would be rejected with the standard approach. \\
+The aforementioned factors should lead to a better separation of signal and background and a higher selection efficiency.
+
+\subsection{Model used and software}
+The machine learning technique used in the analysis is the Boosted Decision Trees (BDT) which showed satisfactory results in analyses similar to this one.
+In particular the BDT provided by the XGBoost library \cite{DBLP:journals/corr/ChenG16} is employed. 
+This library is an open-source package and its algorithms achieved state-of-the-art results on many machine learning challenges, such as those hosted on Kaggle \cite{Kaggle}.
+The model training and performance assessment are performed locally exploiting the software available in the MLHEP package \cite{MLHEP}. 
+While the inference step on the experimental data is done on the GRID, the \Dsubs task \texttt{AliAnalysisTaskSEDs.cxx} has been modified to support the loading and application of 
+a BDT on particle candidates.
+
+\subsection{Data sample}
+The data sample employed is the one used in the standard analysis, i.e. using the linear selections, described in Section~\ref{sec:data_sample}.
+Regarding the MC sample, in addition to the one used in the standard analysis (Section~\ref{sec:mc_sample}), a dedicated production enriched in 
+\Dsubs candidates is employed. The related production cycles are \texttt{LHC19d4a} and \texttt{LHC19d4b}, which correspond to central (0-10\%) 
+and semi-central (30-50\%) events respectively. These MC samples are generated with HIJING + HF Pythia events. More details and the results of
+the QA are reported in the JIRA ticket ALIROOT-8249. \\ 
+
+\subsubsection{Pre-selections}
+The candidates, considered in the machine learning analysis, have daughters that satisfy the single-track selections reported in Section~\ref{sec:single_track}.
+For semi-central events the requirement of at least 70 (out of a maximum of 159) track-associated space points in the TPC is released to 50.
+Less restrictive particle identification requirements are imposed with respect to those of the standard analysis, introduced in Section~\ref{sec:pid_sel}. 
+In particular, the $2\sigma$ compatibility required for tracks with hits only in the TPC and $\pt{} \leq 8~\GeV{}$ is relaxed to $3\sigma$. 
+This allow us to train the model also employing variables related to the PID and let it perform a finer discrimination. 
+Finally, loose topological and kinematic selections are applied in order to reduce the amount of candidates in the data samples. They are reported in 
+Table~\ref{tab:dsubs_pre} and Table~\ref{tab:dsubs2_pre} for the 0-10\% and 30-50\% centrality classes respectively.
+These pre-selections essentially reject the background and preserve a relevant fraction of the signal candidates that pass the single-track selections.
+\begin{table}[h!]
+  \begin{center}
+    \caption{Topological and kinematic pre-selections applied for the \Dsubs analysis in 0--10\% centrality class.}
+    \label{tab:dsubs_pre}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{[2,5]} & \textbf{[5,50]} \\
+      \hline
+      \pt($\pi$, $K$) (GeV/$c$) & $>$ 0.6 & $>$ 0.6  \\
+      \hline
+      Dec. length ($\mum$)  & $>$ 500 & $>$ 200 \\
+      \hline
+      Norm. Dec. length XY  & $>$ 5 & $>$ 2  \\
+      \hline
+      Cosine pointing  & $>$ 0.97 & $>$ 0.90 \\
+      \hline
+      Cosine pointing XY & $>$ 0.96 & $>$ 0.90 \\
+      \hline
+      $\sigma_{vertex}$  (cm) &  $<$ 0.04 & $<$ 0.06 \\
+      \hline
+      M$^{\phi}_{inv}$ - M$^{\phi PDG}_{inv}$ (MeV/$c^{2}$) & $<$ 10 & $<$ 15  \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Topological and kinematic pre-selections applied for the \Dsubs analysis in 30--50\% centrality class.}
+    \label{tab:dsubs2_pre}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{[2,5]} & \textbf{[5,36]} \\
+      \hline
+      \pt($\pi$, $K$) (GeV/$c$) & $>$ 0.4 & $>$ 0.4  \\
+      \hline
+      Dec. length ($\mum$)  & $>$ 200 & $>$ 200 \\
+      \hline
+      Norm. Dec. length XY  & $>$ 2 & $>$ 2  \\
+      \hline
+      Cosine pointing  & $>$ 0.96 & $>$ 0.90 \\
+      \hline
+      Cosine pointing XY & $>$ 0.96 & $>$ 0.90 \\
+      \hline
+      $\sigma_{vertex}$  (cm) &  $<$ 0.045 & $<$ 0.06 \\
+      \hline
+      M$^{\phi}_{inv}$ - M$^{\phi PDG}_{inv}$ (MeV/$c^{2}$) & $<$ 15 & $<$ 15  \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table} 
+
+\subsubsection{Train and test set}
+In order to obtain a machine learning algorithm able to make predictions, it is necessary to build the data sets on which the model training is 
+performed and its performance is evaluated. The training and test set are constructed from MC and real data samples. \\
+The training and test set are composed by the prompt \Dsubs{} and charge conjugate candidates available in the MC sample for the signal. 
+The \texttt{LHC19d4} productions, enhanced in \Dsubs{} candidates, are used for the training set while the \texttt{LHC19c3} productions are used
+for the test set.
+The background, instead, is extracted from the data sample of real candidates. This is done selecting \Dsubs{} and charge conjugate candidates 
+in the side bands of the the invariant mass distribution, away from the \Dplus{} and \Dsubs{} peaks. The idea behind this decision is to use real data, where feasible,
+to avoid a loss in the model predictive power caused by possible shortcomings of simulations in describing the real events. \\
+The number of signal and background candidates used to build the training set is reported, for the different \pt{} regions in which the training is performed, 
+in Table~\ref{tab:data_avail_010} and Table~\ref{tab:data_avail_3050} for the 0-10\% and 30-50\% centrality classes respectively. The signal candidates 
+are all those available in the \texttt{LHC19d4} productions, while the number of background candidates is chosen to be roughly the double of the signal. 
+For the low-\pt{} central collisions more than the double of candidates for the background are used due to the low amount of signal candidates. At high \pt{} less 
+background candidates are used to maintain small the fraction of real data employed in the training with respect to the total amount available.
+The test set is composed by all the \Dsubs{} candidates available in the \texttt{LHC19c3} productions and the same amount of background candidates
+as the training set. \\ 
+\begin{table}[h!]
+  \begin{center}
+  \caption{Number of signal and background candidates used in the training set, 0--10\% centrality class.}
+  \label{tab:data_avail_010}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} &  \textbf{\# signal} & \textbf{\# background} \\
+      \hline
+      \(2 - 3\) & \(\sim 9.6 \cdot 10^3\) & \(50 \cdot 10^3\) \\
+      \hline
+      \(3 - 4\) & \(\sim 21 \cdot 10^3\) & \(80 \cdot 10^3\) \\
+      \hline
+      \(4 - 6\) & \(\sim 67 \cdot 10^3\) & \(160 \cdot 10^3\) \\
+      \hline
+      \(6 - 12\) & \(\sim 204 \cdot 10^3\) & \(200 \cdot 10^3\) \\
+      \hline
+      \(12 - 50\) & \(\sim 242 \cdot 10^3\) & \(120 \cdot 10^3\) \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+\begin{table}[h!]
+  \begin{center}
+  \caption{Number of signal candidates available to build the training test set, 30--50\% centrality class.}
+  \label{tab:data_avail_3050}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} &  \textbf{\# signal} & \textbf{\# background} \\
+    \hline
+    \(2 - 3\) & \(\sim 50 \cdot 10^3\) & \(100 \cdot 10^3\) \\
+    \hline
+    \(3 - 4\) & \(\sim 68 \cdot 10^3\) & \(140 \cdot 10^3\) \\
+    \hline
+    \(4 - 6\) & \(\sim 122 \cdot 10^3\) & \(240 \cdot 10^3\) \\
+    \hline
+    \(6 - 12\) & \(\sim 216 \cdot 10^3\) & \(220 \cdot 10^3\) \\
+    \hline
+    \(12 - 36\) & \(\sim 226 \cdot 10^3\) & \(20 \cdot 10^3\) \\
+    \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\subsection{Model training}
+\subsubsection{Training varaibles}
+\label{sec:train_variables}
+Topological and kinematic variables are used in the model training together with the particle identification 
+information of each candidate daughter, for which it has been chosen to combine the TPC and TOF information as follow
+\begin{equation}
+  n\sigma_{comb}^{\pi,K} = 
+  \begin{cases}
+    |n\sigma_{TPC}^{\pi,K}| & \text{tracks only in TPC} \\
+    \\[4pt]
+    |n\sigma_{TOF}^{\pi,K}| & \text{tracks only in TOF} \\
+    \\[4pt]
+    \frac{1}{\sqrt{2}}\sqrt{\big(n\sigma_{TPC}^{\pi,K}\big)^2 + \big(n\sigma_{TOF}^{\pi,K}\big)^2} & \text{tracks in TPC and TOF}
+  \end{cases} 
+\end{equation}
+where \(n\sigma^{\pi,K}\) is computed from the specific energy loss $dE/dx$ (for the TPC) and the time of flight (for the TOF) 
+measured for a track. The difference between the measured and expected signal for the corresponding particle hypothesis 
+is considered and then it is expressed in units of the resolution as follow
+\begin{equation}
+  n\sigma^{\pi,K} = \frac{|S_{meas} - S_{exp}^{\pi,K}|}{\sigma^{\pi,K}}
+\end{equation}
+where $\sigma^{\pi,K}$ is the resolution on the energy loss or the time of flight signals for each species. 
+This has been done to maintain low the number of variables used in the training and to account for tracks that do not have
+hits in the TOF detector. In the end six PID variables are obtained, two for each track, which contain the information on the 
+compatibility of the track with the pion and kaon hypothesis.\\
+
+The training variables used are reported in Table~\ref{tab:train_var} and their distributions for signal and background, 
+in the \pt{} region between 2 and 3 \(\GeV{}\), are showed in Figure~\ref{fig:var_distr_010} and \ref{fig:var_distr_3050}
+for central and semi-central collision respectively. Also the distributions of the particle candidate mass (\texttt{inv\_mass}) 
+and transverse momentum (\texttt{pt\_cand}), which are not used in the training, are included.
+\begin{table}[htpb]
+  \begin{center}
+  \caption{Training variables used, the names that are used in the plots are reported in parenthesis.}
+  \label{tab:train_var}
+    \begin{tabular}{|l|l|}
+      \hline
+      Decay length & (\texttt{d\_len}) \\
+			\hline
+			Normalized decay length XY & (\texttt{norm\_dl\_xy}) \\
+			\hline
+			Cosine pointing angle XY & (\texttt{cos\_p\_xy}) \\
+			\hline
+			$\sigma_{vertex}$ & (\texttt{sig\_vert}) \\
+			\hline
+			M$^{\phi}_{inv}$ - M$^{\phi PDG}_{inv}$ & (\texttt{delta\_mass\_KK}) \\
+			\hline
+			$|\cos^3 \theta^\prime({\rm K})|$ & (\texttt{cos\_PiKPhi\_3}) \\
+			\hline
+			$|d_0-d_0^{exp}|^{prong}(n\sigma)$ & (\texttt{max\_norm\_d0d0exp}) \\
+      \hline
+      $n\sigma_{comb}^{\pi}(0)$ & (\texttt{nsigComb\_Pi\_0})\\
+      \hline
+      $n\sigma_{comb}^{\pi}(1)$ & (\texttt{nsigComb\_Pi\_1})\\
+      \hline
+      $n\sigma_{comb}^{\pi}(2)$ & (\texttt{nsigComb\_Pi\_2})\\
+      \hline
+      $n\sigma_{comb}^{K}(0)$ & (\texttt{nsigComb\_K\_0})\\
+      \hline
+      $n\sigma_{comb}^{K}(1)$ & (\texttt{nsigComb\_K\_1})\\
+      \hline
+      $n\sigma_{comb}^{K}(2)$ & (\texttt{nsigComb\_K\_2})\\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+\begin{figure}[htpb]
+  \begin{center}
+   \includegraphics[width=1\textwidth]{figures/Dsubs/ml/variablesDistribution_010_pt2_3}
+   \caption{Signal and background variable distributions for candidates in the 0-10\% centrality class.}
+  \label{fig:var_distr_010}
+  \end{center}
+\end{figure}
+\begin{figure}[htpb]
+  \begin{center}
+   \includegraphics[width=1\textwidth]{figures/Dsubs/ml/variablesDistribution_3050_pt2_3}
+   \caption{Signal and background variable distributions for candidates in the 30-50\% centrality class.}
+  \label{fig:var_distr_3050}
+  \end{center}
+\end{figure}
+The linear correlations between the variables used in the training as well as the invariant mass of the \Dsubs{} candidate and 
+its transverse momentum, which are not employed in the training, for signal and background are presented 
+in Figure \ref{fig:corr_010} and Figure \ref{fig:corr_3050} for the two centrality classes considered in the analysis.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.45\textwidth]{figures/Dsubs/ml/correlationmatrixsignal_010_pt2_3.png}
+   \includegraphics[width=0.45\textwidth]{figures/Dsubs/ml/correlationmatrixbackground_010_pt2_3.png} 
+  \caption{Linear correlations between the training variables, the invariant mass of the \Dsubs{} candidates and its transverse 
+  momentum, for signal (left) and background (right) candidates in the 0-10\% centrality class. The colours, 
+  from red (fully correlated) to blue (fully anti-correlated), indicate the correlation level.}
+  \label{fig:corr_010}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.45\textwidth]{figures/Dsubs/ml/correlationmatrixsignal_3050_pt2_3.png}
+   \includegraphics[width=0.45\textwidth]{figures/Dsubs/ml/correlationmatrixbackground_3050_pt2_3.png} 
+  \caption{Linear correlations between the training variables, the invariant mass of the \Dsubs{} candidates and its transverse 
+  momentum, for signal (left) and background (right) candidates in the 30-50\% centrality class. The colours, 
+  from red (fully correlated) to blue (fully anti-correlated), indicate the correlation level.}
+  \label{fig:corr_3050}
+  \end{center}
+\end{figure}
+Variables that carry the same physical informations, such as those related to the decay length, are strongly correlated 
+as expected. Moreover, there are some differences in the variable correlations between signal and background candidates, 
+which could be exploited by the model to discriminate signal from background. It is also useful to control the presence of 
+correlations between the training variables, the invariant mass and the \pt of the candidates. 
+In particular, it is preferable that the selection based on the model predictions does not modify the invariant mass distributions too much. 
+In fact, a complex shape of the background invariant mass distribution requires a function with 
+more free parameters to be described, therefore the yield extraction is more affected by eventual background fluctuations. \\
+No variables are strongly correlated with the invariant mass, thus no deformation of the background invariant mass distribution or  
+formation of structures are expected.
+
+\subsubsection{Training and performance evaluation}
+The number of signal and background candidates used in the training set are different, as shown in Table~\ref{tab:data_avail_010} 
+and~\ref{tab:data_avail_3050}. This choice has been done because a training set with more examples improve the model 
+performance and while the number of signal candidates coming from MC simulations is limited, the background candidates are usually  
+available in much higher quantity. The class imbalance introduced, in the case in which the machine learning model used is a 
+BDT as in this analysis, does not cause biases in the candidate selection. \\
+The hyper-parameter configuration used for the training, in the different \pt{} bins considered, is reported in Table~\ref{tab:hyp_par} 
+and is common for both centrality classes. The complete list of model hyper-parameters, together with their default values and a description 
+of their meaning can be found in the XGBoost documentation~\cite{XGBdoc, XGBdefault}. 
+\begin{table}[h!]
+  \begin{center}
+  \caption{Hyper-parameter configuration for the \pt{} bin considered in the training.}
+  \label{tab:hyp_par}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{Hyper-parameter} & \textbf{\(\mathbf{\pt{} < 6}\) (GeV/\textit{c})} & \textbf{\(\mathbf{\pt{} > 6}\) (GeV/\textit{c})} \\
+      \hline
+      \texttt{learning\_rate} & 0.1 & 0.1 \\
+      \hline
+      \texttt{max\_depth} & 4 & 5 \\
+      \hline
+      \texttt{min\_child\_weight} & 2 & 2 \\
+      \hline
+      \texttt{colsample\_bytree} & 0.9 & 0.9 \\
+      \hline
+      \texttt{tree\_method} & 'approx' & 'approx' \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+The number of trees that compose the ensemble is fixed using the early stopping method and a 5-fold cross-validation \cite{stat_learn} 
+to estimate the model performance as the number of trees in the ensemble increases. It has been observed that this approach gives a resonable 
+tuning of the model complexity without the need of an extensive and time consuming search over all the hyper-parameters. 
+The number of trees, \texttt{n\_estimators}, selected for the different \pt{} intervals in which the training is performed are reported in 
+Table~\ref{tab:numtree} for the 0-10\% and 30-50\% centrality classes. \\
+\begin{table}[h!]
+  \begin{center}
+  \caption{Number of trees used for the \pt{} intervals in which the training is performed, 0--10\% and 30--50\% centrality class.}
+  \label{tab:numtree}
+    \begin{tabular}{|c|c|c|}
+      \hline
+      \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} &  \textbf{\texttt{n\_estimators} (0-10)\%} & \textbf{\texttt{n\_estimators} (30-50)\%} \\
+      \hline
+      \(2 - 3\) & 300 & 378 \\
+      \hline
+      \(3 - 4\) & 427 & 460 \\
+      \hline
+      \(4 - 6\) & 625 & 969 \\
+      \hline
+      \(6 - 12\) & 1393 & 1349 \\
+      \hline
+      \(12 - 50\) & 1167 & 527 \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+After the training, to assess the performance of the model the area under the Receiver Operating Characteristic curve (ROC AUC) 
+is considered. The Receiver Operating Characteristic (ROC) curve is obtained plotting the signal selection efficiency, the 
+True Positive Rate in more general terms, as function of the background selection efficiency, False Positive Rate, for various 
+threshold settings on the model output. The possible values of the ROC AUC are comprehended between one half and one where 0.5 corresponds 
+to a random classification and 1 to a perfect discrimination of the two class samples. The ROC AUC gives a global estimation of the model 
+performance, i.e. not related to the threshold value that will be chosen. Moreover, it is independent with respect to the
+relative abundances of the class instances in the dataset used for its evaluation. \\
+The ROC curves and the values of ROC AUC, obtained on the training and test set, for the models trained in the 2-3 \pt{} region are reported in Figure~\ref{fig:roc_pt2_3} 
+for central and semi-central events.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/ROC_Curve_0_10_pt2_3}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/ROC_Curve_30_50_pt2_3} 
+  \caption{ROC curves for the models trained in the 2-3 \pt{} region in the 0-10\% (left) and 30-50\% (right) centrality classes. 
+           The results obtained on the training set are reported in light blue while those obtained on the test set are in dark blue.}
+  \label{fig:roc_pt2_3}
+  \end{center}
+\end{figure}
+A small discrepancy between the ROC curves on the training and test set indicates that the model is not over-fitting. A similar behaviour 
+is observed in the other \pt{} regions in which the training is performed and the ROC AUC on the test set range between \(\sim 0.97\) and \(\sim 0.985\).
+
+
+\subsection{Model application on data}
+From the machine learning model application on the real-data candidate a `BDT output' comprehended between 0 and 1 is obtained,
+this value can be interpreted as the probability of a particle candidate to be a signal one. It is necessary to choose a 
+threshold value on the BDT output, in order to reject a large number of background candidates and keep most of the \Dsubs{} meson signal. 
+Thus a scan of the possible BDT-output threshold values is performed. 
+For each threshold value the BDT-selection efficiency of prompt \Dsubs{} is computed exploiting the test set. 
+Moreover, an expected signal significance for the given threshold is estimated. To this end the expected signal is computed 
+multiplying the pre-selection and BDT-selection efficiencies to the predicted yield obtained with FONLL and TAMU. 
+While the expected background under the signal peak is estimated from a fit to the sidebands of the invariant mass distribution of 
+a small portion of real data after the application of the BDT selection. It has been found that the values of expected significance
+predicted are very sensitive to background fluctuations and to the \pt{} shape of the signal. Therefore, they aren't used directly for the 
+cut selection but are useful to have an idea of the region of interest for the threshold. \\
+The threshold value is tuned to preserve the highest possible selection efficiency and a good statistical significance and stability of the \Dsubs{}-meson signal extraction. 
+The prompt BDT-selection efficiency as a function of the threshold value is reported, together with the expected significance, 
+for the transverse momentum interval within 2 and 3 \(\GeV{}\) in Figure~\ref{fig:effsig_pt2_3_010} and~\ref{fig:effsig_pt2_3_3050}, for the 0-10\% and 30-50\% centrality classes respectively.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/EfficiencyCen010_pt2_3}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/ExpSignif_0_10_pt2_3} 
+  \caption{Prompt BDT-selection efficiency (left) and expected significance (right) in the 2-3 \pt{} region for the 0-10\% centrality class.}
+  \label{fig:effsig_pt2_3_010}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/EfficiencyCen3050_pt2_3}
+    \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/ExpSignif_30_50_pt2_3} 
+  \caption{Prompt BDT-selection efficiency (left) and expected significance (right) in the 2-3 \pt{} region for the 30-50\% centrality class.}
+  \label{fig:effsig_pt2_3_3050}
+  \end{center}
+\end{figure}
+
+\subsection{Signal extraction}
+The models trained in the different \pt{} intervals are applied to the respective transverse momentum region. The threshold values used, 
+as a function of \pt{}, are reported in Table~\ref{tab:cut_values} for the 0-10\% and 30-50\% centrality classes. \\
+\begin{table}[h!]
+  \begin{center}
+  \caption{Threshold values on the BDT output for the different \pt{} bins of the analysis, for the 0-10\% and 
+          30-50\% centrality classes}
+  \label{tab:cut_values}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Threshold value (0-10\%)} & \textbf{Threshold value (30-50\%)} \\
+    \hline
+    \(2 - 3\) & 0.9925 & 0.9983 \\
+    \hline
+    \(3 - 4\) & 0.9950 & 0.9980 \\
+    \hline
+    \(4 - 5\) & 0.9983 & 0.9970 \\
+    \hline
+    \(5 - 6\) & 0.9975 & 0.9965 \\
+    \hline
+    \(6 - 8\) & 0.9985 & 0.997 \\
+    \hline
+    \(8 - 12\) & 0.9965 & 0.985 \\
+    \hline
+    \(12 - 16\) & 0.96 & 0.975 \\
+    \hline
+    \(16 - 24\) & 0.94 & 0.975 \\
+    \hline
+    \(24 - 36\) & 0.98 & 0.985 \\
+    \hline
+    \(36 - 50\) & 0.955 & --- \\
+    \hline
+  \end{tabular}
+  \end{center}
+\end{table}
+
+The signal extraction procedure is the same as that reported in Section~\ref{sec:sign_extr}. 
+The invariant mass distributions obtained in the 0-10\% and 30-50\% centrality classes are reported in Figure~\ref{fig:sig_ml_010} and~\ref{fig:sig_ml_3050} respectively. \\
+\begin{figure}[htpb]
+  \begin{center}
+   \includegraphics[width=1\textwidth]{figures/Dsubs/ml/RawYieldsDs_010_pt2_50.pdf}
+   \caption{\Dsubs{} signal in 0--10\% in the range \(2 < \pt{} < 50 \GeV{}\).}
+  \label{fig:sig_ml_010}
+  \end{center}
+\end{figure}
+\begin{figure}[htpb]
+  \begin{center}
+   \includegraphics[width=1\textwidth]{figures/Dsubs/ml/RawYieldsDs_3050_pt2_36.pdf}
+   \caption{\Dsubs{} signal in 30--50\% in the range \(2 < \pt{} < 36 \GeV{}\).}
+  \label{fig:sig_ml_3050}
+  \end{center}
+\end{figure}
+The goodness of the mass fit expectations was checked against the Monte Carlo and the standard analysis in terms of mass peak \(\sigma\) and position. 
+The comparisons of the Gaussian width and mean of the \Dsubs{}-meson mass peaks in data, with the two different approaches to the candidate selection, 
+and Monte Carlo are reported in Figure~\ref{fig:comp_par_010} and~\ref{fig:comp_par_3050} for the 0-10\% and 30–50\% centrality classes respectively. \\
+\begin{figure}[htpb]
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/Mean_compMCStd_010}
+    \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/Sigma_compMCStd_010}
+   \caption{Comparison of Gaussian mean (left) and width (right) extracted from the invariant-mass fits of \Dsubs{} candidates in 0--10\% for the data and the MC simulation.}
+  \label{fig:comp_par_010}
+  \end{center}
+\end{figure}
+\begin{figure}[htpb]
+  \begin{center}
+    \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/Mean_compMCStd_3050}
+    \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/Sigma_compMCStd_3050}
+   \caption{Comparison of Gaussian mean (left) and width (right) extracted from the invariant-mass fits of \Dsubs{} candidates in 30--50\% for the data and the MC simulation.}
+  \label{fig:comp_par_3050}
+  \end{center}
+\end{figure}
+The significances per event obtained with the BDT selections are compared to those of the standard analysis in Figure~\ref{fig:signif_comp} 
+for the two centrality classes. To perform the comparison, the width of the \Dsubs{} peak has been fixed in the invariant-mass fits to the 
+values obtained from the standard analysis. Employing the BDT selections \(\sim50\%\) higher significances per event are obtained with respect to the standard 
+analysis in all the comparable \pt{} region and for both centrality classes.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/Dsubs/ml/SignificancePerEventComparison_ML_Std_010}
+   \includegraphics[width=0.8\textwidth]{figures/Dsubs/ml/SignificancePerEventComparison_ML_Std_3050} 
+  \caption{Comparison of efficiency$\times$acceptance for prompt (red) and feed-down (blue) \Dsubs{} with BDT selections, 
+           prompt (orange) and feed-down (green) \Dsubs{} with linear selections in 0--10$\%$ (left) and 30--50$\%$ (right).}
+  \label{fig:signif_comp}
+  \end{center}
+\end{figure}
+
+\subsection{Selection efficiencies}
+The selection efficiency is estimated using the \texttt{LHC19c3a} and \texttt{LHC19c3b} MC productions following the same 
+procedure as described in Section~\ref{sec:eff}. 
+The prompt and feed-down efficiency$\times$acceptance as a function of \pt{} obtained in the 0-10\% and 30-50\% centrality classes 
+are reported in Figure~\ref{fig:eff_tot}.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/EffAcc_Ds010_pt2_50}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/EffAcc_Ds3050_pt2_36} 
+  \caption{Transverse momentum dependence of efficiency$\times$acceptance for prompt (red) 
+           and feed-down (blue) \Dsubs in 0--10$\%$ (left) and 30--50$\%$ (right).}
+  \label{fig:eff_tot}
+  \end{center}
+\end{figure}
+The selection efficiencies obtained with the BDT selections are compared to those of the standard analysis in Figure~\ref{fig:eff_comp} 
+for the two centrality classes. Employing the BDT selection higher efficiencies are obtained with respect to the standard analysis in all 
+the comparable \pt{} region and for both centrality classes.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[height=6cm, width=7.5cm]{figures/Dsubs/ml/Comp_EffAcc_wStd_010}
+   \includegraphics[height=6.05cm, width=7.5cm]{figures/Dsubs/ml/Comp_EffAcc_wStd_3050} 
+  \caption{Comparison of efficiency$\times$acceptance for prompt (red) and feed-down (blue) \Dsubs{} with BDT selections, 
+           prompt (orange) and feed-down (green) \Dsubs{} with linear selections in 0--10$\%$ (left) and 30--50$\%$ (right).}
+  \label{fig:eff_comp}
+  \end{center}
+\end{figure}
+
+\clearpage
+
+\subsection{Systematic uncertainties}
+Given that only the candidate selection step is different from the standard analysis only few of the 
+systematic uncertainty contributions need to be re-estimated. These are related to: the raw yield extraction, 
+the selection efficiency and the generated \pt{} shape. \\ 
+For what concerns the PID selection efficiency, the systematic 
+contribution considered is the one related to the conservative PID strategy, used in the pre-selections for the 
+dataset of this analysis with the BDT, differently from the standard analysis that use the strong PID at 
+\(\pt{} < 8~\GeV{}\). Possible systematics due to the use of the PID variables, described in Section~\ref{sec:train_variables},
+in the model training are already accounted in the selection efficiency contribution.
+ 
+\subsubsection{Raw yield extraction}
+The procedure for the estimation of the systematic uncertainty due to the raw yield extraction follow what is performed 
+in the standard analysis, which is described in Section~\ref{sec:raw_yield_syst}.  The results for \Dsubs{} are shown in 
+Figures~\ref{fig:DsYieldSyst010_ml_1},~\ref{fig:DsYieldSyst010_ml_2},~\ref{fig:DsYieldSyst010_ml_3} for the 0-10\% centrality 
+class and in Figures~\ref{fig:DsYieldSyst3050_ml_1},~\ref{fig:DsYieldSyst3050_ml_2} for the 30-50\% centrality class.
+\begin{figure}[htbp]
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_lowpt_pt0}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_lowpt_pt1_sigmaPlus15}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_lowpt_pt2}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_lowpt_pt3}
+  \caption{Output of the multi-trial study for \Dsubs mesons in 0--10$\%$. For each \pt bin, the top left panel shows the raw yield 
+           as a function of the trial, the top right panel the obtained distribution of raw yields, the bottom left panel the Gaussian 
+           sigma as a function of the trial and the bottom right panel the $\chi^2/ndf$ as a function of the trial. In the 3-4 
+           \(~\GeV{}/c\) \pt{} bin the trials with fixed sigma are performed with the MC value +15\%.}
+  \label{fig:DsYieldSyst010_ml_1}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_lowpt_pt4_sigmaPlus15}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_highpt_pt5}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_highpt_pt6}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_highpt_pt7}
+  \caption{Output of the multi-trial study for \Dsubs mesons in 0--10$\%$. For each \pt bin, the top left panel shows the raw yield 
+           as a function of the trial, the top right panel the obtained distribution of raw yields, the bottom left panel the Gaussian 
+           sigma as a function of the trial and the bottom right panel the $\chi^2/ndf$ as a function of the trial. In the 6-8 
+           \(~\GeV{}/c\) \pt{} bin the trials with fixed sigma are performed with the MC value +15\%.}
+  \label{fig:DsYieldSyst010_ml_2}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+  \includegraphics[width=0.55\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_highpt_pt8}
+  \includegraphics[width=0.55\textwidth]{figures/Dsubs/ml/raw_yield_syst_010/RawYieldsSystDs_010_071019_pt36_50_pt9}
+  \caption{Output of the multi-trial study for \Dsubs mesons in 0--10$\%$. For each \pt bin, the top left panel shows the raw yield 
+           as a function of the trial, the top right panel the obtained distribution of raw yields, the bottom left panel the Gaussian 
+           sigma as a function of the trial and the bottom right panel the $\chi^2/ndf$ as a function of the trial.}
+  \label{fig:DsYieldSyst010_ml_3}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_lowpt_pt0}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_lowpt_pt1}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_lowpt_pt2}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_lowpt_pt3}
+  \caption{Output of the multi-trial study for \Dsubs mesons in 30--50\%. For each \pt bin, the top left panel shows the raw yield 
+           as a function of the trial, the top right panel the obtained distribution of raw yields, the bottom left panel the Gaussian 
+           sigma as a function of the trial and the bottom right panel the $\chi^2/ndf$ as a function of the trial.}
+  \label{fig:DsYieldSyst3050_ml_1}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_lowpt_pt4}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_lowpt_pt5}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_highpt_pt6}
+  \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/raw_yield_syst_3050/RawYieldsSystDs_3050_011019_highpt_pt7}
+  \caption{Output of the multi-trial study for \Dsubs mesons in 30--50\%. For each \pt bin, the top left panel shows the raw yield 
+           as a function of the trial, the top right panel the obtained distribution of raw yields, the bottom left panel the Gaussian 
+           sigma as a function of the trial and the bottom right panel the $\chi^2/ndf$ as a function of the trial.}
+  \label{fig:DsYieldSyst3050_ml_2}
+  \end{center}
+\end{figure}
+The numerical values of the systematic on yield extraction, determined bin by bin for the two centrality classes considered, 
+are reported in Tables~\ref{tab:DsYieldSyst010_ml} and ~\ref{tab:DsYieldSyst3050_ml}.
+\begin{table}[htbp]
+  \begin{center}
+   \begin{tabular}{|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Raw-yield syst. unc.} \\
+    \hline
+    2-3 & 10\%\\
+    \hline
+    3-4 & 8\%\\
+    \hline
+    4-5 & 4\%\\
+    \hline
+    5-6 & 3\%\\
+    \hline
+    6-8 & 3\%\\
+    \hline
+    8-12 & 3\%\\
+    \hline
+    12-16 & 3\%\\
+    \hline
+    16-24 & 3\%\\
+    \hline
+    24-36 & 5\%\\
+    \hline
+    36-50 & 10\%\\ 
+    \hline
+   \end{tabular}
+  \end{center}
+  \caption{Systematic uncertainty from yield extraction for the \Dsubs{} mesons in the 0--10\% centrality class.}
+  \label{tab:DsYieldSyst010_ml}
+\end{table}
+\begin{table}[htbp]
+  \begin{center}
+   \begin{tabular}{|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Raw-yield syst. unc.} \\
+    \hline
+    2-3 & 9\%\\
+    \hline
+    3-4 & 7\%\\
+    \hline
+    4-6 & 4\%\\
+    \hline
+    6-8 & 3\%\\
+    \hline
+    8-12 & 3\%\\
+    \hline
+    12-16 & 3\%\\
+    \hline
+    16-24 & 3\%\\
+    \hline
+    24-36 & 6\%\\
+    \hline
+   \end{tabular}
+  \end{center}
+  \caption{Systematic uncertainty from yield extraction for the \Dsubs{} mesons in the 30--50\% centrality class.}
+  \label{tab:DsYieldSyst3050_ml}
+\end{table} 
+
+\clearpage
+ 
+\subsubsection{Selection efficiency}
+A systematic uncertainty can arise from possible differences in the particle-variable shapes between data and Monte Carlo 
+that can affect the model training, thus the final selections, and due to residual misalignment. 
+These sources were checked by repeating the analysis varying the threshold on the BDT output from the central value with an approach 
+similar to the one described in Section~\ref{sec:eff_syst}. \\
+A systematic scan from loose to tight selections was done on the threshold value, reconstructing the yields, comparing them to the yields obtained 
+with the reference threshold value and looking for possible trends/biases of the reconstructed yield as a function of the cut strength. 
+A set of 30 looser threshold and 20 tighter ones was considered, looking for a \(\pm~50\%\) efficiency 
+variation with respect to the central case. \\
+The result of this study for each \pt{} bin is shown in Figures~\ref{fig:DsCutSyst010_ml_1},~\ref{fig:DsCutSyst010_ml_2},~\ref{fig:DsCutSyst010_ml_3} 
+for central events and in Figures~\ref{fig:DsCutSyst3050_ml_1},~\ref{fig:DsCutSyst3050_ml_2} for semi-central ones. The variations of the raw yield, prompt and
+feed-down \Dsubs{} efficiency, significance, signal-to-background ratio, and corrected yield are plotted as a
+function of the cut set tested. Finally the distribution of the variation of the corrected yield is shown. All the trials for which: the fit had a \(\chi^2/ndf < 2\), the efficiency was larger than \(0.4\) 
+times the one of the central value, the significance was larger than \(0.5\) times the one of the central value and
+the variation of the efficiency was larger than 0.5\% were taken into account. 
+The systematic uncertainty was assigned considering the rms and the deviation from unity of these distributions. 
+The values are reported in Table~\ref{tab:DsEffSyst010_ml} and Table~\ref{tab:DsEffSyst3050_ml} for central and semi-central events respectively.
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_lowpt_ptbin0}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_lowpt_ptbin1}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_lowpt_ptbin2}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_lowpt_ptbin3}
+    \caption{Variations of raw yield, prompt and feed-down \Dsubs{} efficiency, significance, signal-to-background ratio, 
+            and corrected yield obtained with the cut-variation study for the \Dsubs{} mesons in the 0--10\% centrality class
+            for the 2 to 6 \(\GeV{}/c\) \pt{} region.}
+    \label{fig:DsCutSyst010_ml_1}
+  \end{center}
+\end{figure}
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_lowpt_ptbin4}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_highpt_ptbin0}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_highpt_ptbin1}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_highpt_ptbin2}
+    \caption{Variations of raw yield, prompt and feed-down \Dsubs{} efficiency, significance, signal-to-background ratio, 
+            and corrected yield obtained with the cut-variation study for the \Dsubs{} mesons in the 0--10\% centrality class
+            for the 6 to 24 \(\GeV{}/c\) \pt{} region.}
+    \label{fig:DsCutSyst010_ml_2}
+  \end{center}
+\end{figure}
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_highpt_ptbin3}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_010/CutVarSyst_Ds_010_highpt_ptbin4}
+    \caption{Variations of raw yield, prompt and feed-down \Dsubs{} efficiency, significance, signal-to-background ratio, 
+            and corrected yield obtained with the cut-variation study for the \Dsubs{} mesons in the 0--10\% centrality class
+            for the 24 to 50 \(\GeV{}/c\) \pt{} region.}
+    \label{fig:DsCutSyst010_ml_3}
+  \end{center}
+\end{figure}
+
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_lowpt_ptbin0}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_lowpt_ptbin1}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_lowpt_ptbin2}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_lowpt_ptbin3}
+    \caption{Variations of raw yield, prompt and feed-down \Dsubs{} efficiency, significance, signal-to-background ratio, 
+            and corrected yield obtained with the cut-variation study for the \Dsubs{} mesons in the 30--50\% centrality class
+            for the 2 to 8 \(\GeV{}/c\) \pt{} region.}
+    \label{fig:DsCutSyst3050_ml_1}
+  \end{center}
+\end{figure}
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_hight_ptbin0}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_hight_ptbin1}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_hight_ptbin2}
+    \includegraphics[width=0.65\textwidth]{figures/Dsubs/ml/eff_syst_3050/CutVarSyst_Ds_3050_hight_ptbin3}
+    \caption{Variations of raw yield, prompt and feed-down \Dsubs{} efficiency, significance, signal-to-background ratio, 
+            and corrected yield obtained with the cut-variation study for the \Dsubs{} mesons in the 30--50\% centrality class
+            for the 8 to 36 \(\GeV{}/c\) \pt{} region.}
+    \label{fig:DsCutSyst3050_ml_2}
+  \end{center}
+\end{figure}
+
+\begin{table}[htbp]
+  \begin{center}
+   \begin{tabular}{|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Efficiency syst. unc.} \\
+    \hline
+    2-3 & 8\%\\
+    \hline
+    3-4 & 8\%\\
+    \hline
+    4-5 & 6\%\\
+    \hline
+    5-6 & 6\%\\
+    \hline
+    6-8 & 4\%\\
+    \hline
+    8-12 & 4\%\\
+    \hline
+    12-16 & 4\%\\
+    \hline
+    16-24 & 4\%\\
+    \hline
+    24-36 & 4\%\\
+    \hline
+    36-50 & 4\%\\ 
+    \hline
+   \end{tabular}
+  \end{center}
+  \caption{Systematic uncertainty estimated with the threshold-variation study for the \Dsubs{} mesons in the 0--10\% centrality class.}
+  \label{tab:DsEffSyst010_ml}
+\end{table}
+\begin{table}[htbp]
+  \begin{center}
+   \begin{tabular}{|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Efficiency syst. unc.} \\
+    \hline
+    2-3 & 6\%\\
+    \hline
+    3-4 & 6\%\\
+    \hline
+    4-6 & 6\%\\
+    \hline
+    6-8 & 4\%\\
+    \hline
+    8-12 & 4\%\\
+    \hline
+    12-16 & 4\%\\
+    \hline
+    16-24 & 4\%\\
+    \hline
+    24-36 & 4\%\\
+    \hline
+   \end{tabular}
+  \end{center}
+  \caption{Systematic uncertainty estimated with the threshold-variation study for the \Dsubs{} mesons in the 30--50\% centrality class.}
+  \label{tab:DsEffSyst3050_ml}
+\end{table}
+
+ \clearpage
+
+\subsubsection{Generated \pt{} shape}
+The procedure for the estimation of the systematic uncertainty due to the generated \pt{} shape follow what is performed 
+in the standard analysis, which is described in Section~\ref{sec:gen_pt_syst}. \\
+The variation of the efficiency of prompt \Dsubs{} mesons is reported in Figure~\ref{fig:genpt_010} and Figure~\ref{fig:genpt_3050}, for the 0-10\% 
+and 30-50\% centrality classes respectively.
+The assigned systematic are reported in Table~\ref{tab:DsGenPtSyst010_ml} and Table~\ref{tab:DsGenPtSyst3050_ml} for the two centrality classes.
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/Dsubs/ml/SystPtWeights_010_ML_wrtTAMU_LHC19c3a}
+  \caption{Prompt \Dsubs{} efficiency (left) with different \pt{} weights and its variation (right) in the 0--10\% centrality
+           class.}
+  \label{fig:genpt_010}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.8\textwidth]{figures/Dsubs/ml/SystPtWeights_3050_ML_wrtTAMU_LHC19c3b}
+  \caption{Prompt \Dsubs{} efficiency (left) with different \pt{} weights and its variation (right) in the 30--50\% centrality
+           class.}
+  \label{fig:genpt_3050}
+  \end{center}
+\end{figure}
+\begin{table}[htbp]
+  \begin{center}
+   \begin{tabular}{|c|c|}
+    \hline
+    \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Efficiency syst. unc.} \\
+    \hline
+    2-3 & 5\%\\
+    \hline
+    3-5 & 3\%\\
+    \hline
+    5-12 & 2\%\\
+    \hline
+    12-50 & 0\%\\
+    \hline
+   \end{tabular}
+  \end{center}
+  \caption{Systematic uncertainty due to the generated \pt{} shape for the \Dsubs{} mesons in the 0--10\% centrality class.}
+  \label{tab:DsGenPtSyst010_ml}
+\end{table}
+\begin{table}[htbp]
+\begin{center}
+  \begin{tabular}{|c|c|}
+  \hline
+  \textbf{$\mathbf{\pt{}}$ (GeV/\textit{c})} & \textbf{Efficiency syst. unc.} \\
+  \hline
+  2-3 & 5\%\\
+  \hline
+  3-6 & 3\%\\
+  \hline
+  6-12 & 1\%\\
+  \hline
+  12-36 & 0\%\\
+  \hline
+  \end{tabular}
+\end{center}
+\caption{Systematic uncertainty due to the generated \pt{} shape for the \Dsubs{} mesons in the 30--50\% centrality class.}
+\label{tab:DsGenPtSyst3050_ml}
+\end{table}
+
+\subsection{Results}
+The \(\RAA{}\) obtained is reported in Figure~\ref{fig:raa_ml} for the two centrality classes considered and compared to the results of the 
+standard analysis. The correction for the imperfect description of the TPC dead zones is included in both the measurements. 
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/Comp_Raa_010}
+   \includegraphics[width=0.48\textwidth]{figures/Dsubs/ml/Comp_Raa_3050} 
+  \caption{\pt{}-differential \(\RAA{}\) of prompt \Dsubs{} in the 0-10\% (left panel) and 30-50\% (right panel) centrality classes 
+           measured with the BDT approach (red) compared to the measurement obtained with the linear selections (blue).}
+  \label{fig:raa_ml}
+  \end{center}
+\end{figure}
+
+\clearpage
+
+\subsection{Checks on topological and PID variables}
+Given the complex nature of the selection applied by the BDT model it is interesting to investigate their effect. To this end the distributions 
+of the variables used in the training before, with the pre-selections applied, and after the BDT selections employed for the analysis are considered. \\
+In Figure~\ref{fig:topo_1D_3050_pt3_4} and Figure~\ref{fig:topo_2D_3050_pt3_4} the distributions of topological and kinematic variables of prompt \Dsubs{} candidate, from the \texttt{LHC19d4a} production, are reported fom the 30--50\% centrality class 
+in the \pt{} range between 3 and 4 \(\GeV{}/c\) (the amount of data in \(2 < \pt{} < 3~\GeV{}/c\) is too small to have clear information). \\
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=\textwidth]{figures/Dsubs/ml/LHC19d4b_TopolVars_pT3-4_1D}
+  \caption{Distributions of \pt{}, kinematic and topological variables before (blue) and after the BDT selection (red) for prompt \Dsubs{} candidates in \(3 < \pt{} < 4~\GeV{}/c\) and 30--50\% centrality class.}
+  \label{fig:topo_1D_3050_pt3_4}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=\textwidth]{figures/Dsubs/ml/LHC19d4b_TopolVars_pT3-4_2D}
+  \caption{Distributions of \pt{}, kinematic and topological variables versus \pt{} (top) and BDT (bottom) output before (blue) and after the BDT selection (red) for prompt \Dsubs{} candidates in \(3 < \pt{} < 4~\GeV{}/c\) and 30--50\% centrality class.}
+  \label{fig:topo_2D_3050_pt3_4}
+  \end{center}
+\end{figure}
+Differently to the linear selections, reported in Table~\ref{tab:dsubs2} for the 30-50\% centrality class, it looks like that the BDT applies smoother selections on the candidate variables. The \pt{} distribution is almost not affected by the selection. 
+Looking at the 2-D plots versus \pt{} no clear transverse momentum dependence of the selections is present. However, it must be considered that the selections of the BDT could not be well 
+represented in these low-dimensional plots. \\
+In Figure~\ref{fig:PID_1D_3050_pt3_4},~\ref{fig:PID_2D_3050_pt3_4_TPCTOF} and~\ref{fig:PID_2D_3050_pt3_4} and the distributions of PID variables of prompt \Dsubs{} candidate are reported fom the 30--50\% centrality class 
+in the \pt{} range between 3 and 4 \(\GeV{}/c\). \\
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.85\textwidth]{figures/Dsubs/ml/LHC19d4b_PIDVars_pT3_4_TPC}
+   \includegraphics[width=0.85\textwidth]{figures/Dsubs/ml/LHC19d4b_PIDVars_pT3_4_TOF}
+   \includegraphics[width=0.85\textwidth]{figures/Dsubs/ml/LHC19d4b_PIDVars_pT3_4_Comb}
+  \caption{\(n\sigma\) distributions for TPC (top), TOF (middle) and the combination used in the training (bottom) before (blue) and after the BDT selection (red) for prompt \Dsubs{} candidates in \(3 < \pt{} < 4~\GeV{}/c\) and 30--50\% centrality class.}
+  \label{fig:PID_1D_3050_pt3_4}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=\textwidth]{figures/Dsubs/ml/LHC19d4b_PIDVars_pT3_4_TPCTOF_2D}
+  \caption{Scatter plots of TPC and TOF \(n\sigma\) distributions for the different daughters and particle hypothesis before (blue) and after the BDT selection (red) for prompt \Dsubs{} candidates in \(3 < \pt{} < 4~\GeV{}/c\) and 30--50\% centrality class.}
+  \label{fig:PID_2D_3050_pt3_4_TPCTOF}
+  \end{center}
+\end{figure}
+\begin{figure}[htbp]
+  \begin{center}
+   \includegraphics[width=0.85\textwidth]{figures/Dsubs/ml/LHC19d4b_PIDVars_pT3_4_TPC_2D}
+   \includegraphics[width=0.85\textwidth]{figures/Dsubs/ml/LHC19d4b_PIDVars_pT3_4_TOF_2D}
+  \caption{Scatter plots of \(n\sigma\) distributions of the first and third \Dsubs{} daughter for TPC (top) and TOF (bottom) before (blue) and after the BDT selection (red) for prompt \Dsubs{} candidates in \(3 < \pt{} < 4~\GeV{}/c\) and 30--50\% centrality class.}
+  \label{fig:PID_2D_3050_pt3_4}
+  \end{center}
+\end{figure}
+Looking at the PID distributions and in particular to the compatibility with the kaon hypothesis for the middle daughter, that is always a kaon, it is possible to notice that the 
+conservative PID imposed in the pre-selections is almost preserved by the BDT selections. 
