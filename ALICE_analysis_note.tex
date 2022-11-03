@@ -1,0 +1,94 @@
+\documentclass[ALICE,manyauthors]{ALICE_analysis_notes}
+%\documentclass[ALICE,manyauthors]{ALICE_scientific_notes}
+%
+%\newcommand{\jpsi}{\rm J/$\psi$}
+%\newcommand{\psip}{$\psi^\prime$}
+%\newcommand{\jpsiDY}{\rm J/$\psi$\,/\,DY}
+%\newcommand{\dd}{\mathrm{d}}
+%\newcommand{\chic}{$\chi_{\rm c}$}
+%\newcommand{\ezdc}{$E_{\rm ZDC}$}
+%\newcommand{\red}{\textcolor{red}}
+%\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\slfrac}[2]{\left.#1\right/#2}
+\newcommand{\sNN}{$\sqrt{s_{\mathrm{NN}}} = $\xspace}
+\newcommand{\pip}{$\pi^{+}$\xspace}
+\newcommand{\pim}{$\pi^{-}$\xspace}
+\newcommand{\kap}{K$^{+}$\xspace}
+\newcommand{\kam}{K$^{-}$\xspace}
+\newcommand{\pbar}{$\rm\overline{p}$\xspace}
+\newcommand{\degree}{$^{\rm o}$\xspace}
+\newcommand{\s}{$\sqrt{s}=$\xspace}
+\newcommand{\pt}{\ensuremath{p_{\rm T}}\xspace}
+\newcommand{\dedx}{d$E$/d$x$\xspace}
+\newcommand{\dndy}{d$N$/d$y$\xspace}
+\newcommand{\dndydpt}{${\rm d}^2N/({\rm d}y {\rm d}p_{\rm T})$\xspace}
+\newcommand{\pp}{pp\xspace}
+\newcommand{\pbpb}{Pb--Pb\xspace}
+\newcommand{\raa}{$R_{\mathrm{AA}}$\xspace}
+\newcommand{\Dstar}{D$^{*+}$\xspace}
+\newcommand{\Dzero}{D$^0$\xspace}
+\newcommand{\Dplus}{D$^+$\xspace}
+\newcommand{\Dsubs}{D$^+_{\mathrm{s}}$\xspace}
+\newcommand{\MeV}{{\rm MeV}}
+\newcommand{\GeV}{{\rm GeV}}
+\newcommand{\TeV}{{\rm TeV}}
+\newcommand{\TAA}{T_{\mathrm{AA}}}
+\newcommand{\RAA}{R_{\mathrm{AA}}}
+\newcommand{\mum}{\mu{\rm m}}
+\newcommand{\de}{{\rm d}}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{lineno}
+%
+\begin{document}%
+%%%%%%%%%%%%% ptdr definitions %%%%%%%%%%%%%%%%%%%%%
+%
+%%%%%%%%%%%%%%%  Title page %%%%%%%%%%%%%%%%%%%%%%%%
+%
+\begin{titlepage}
+%
+\PHnumber{ALICE-ANA-2022-xxx} 
+\PHdate{\today}
+%
+%%% Put your own title + short title here:
+\title{Prompt \Dstar mesons production in pp collisions at \s 13 TeV}
+\ShortTitle{\Dstar meson production in pp collisions at \s 13 TeV}   % appears on right page headers
+%
+\author{Syaefudin Jaelani$^{1}$}
+\author{
+1. Indonesian Institute of Sciences
+}
+\author{Email: syaefudin.jaelani@cern.ch}
+%
+\ShortAuthor{ALICE Analysis Note 2019}      % appears on left page headers, do not change
+%
+%\linenumbers
+\begin{abstract}
+The production of prompt \Dstar mesons and their anti-particles was measured using the 2016, 2017 and 2018 data samples of pp collisions at \s 13 TeV collected by the ALICE collaboration. The production cross-sections are measured at mid-rapidity as a function of \pt, in the range 1 $<$ \pt $<$ 50 GeV/$c$.
+
+%The \pt-differential production yields at central rapidity ($|y|<$0.5), in the range 1 $<$ \pt $<$ 50 GeV/$c$, were used to evaluate the nuclear modification factor \raa with respect to the pp reference at \s 5 TeV measured by the ALICE Collaboration \cite{Acharya:2019mgn}. The calculation is performed in two centrality classes, 0--10$\%$ and 30--50$\%$. The ratios of \Dzero/\Dsubs, \Dplus/\Dsubs and \Dstar/\Dsubs are also studied in order to investigate a possible different suppression of charm and strange mesons. This might bring insight in the hadronization mechanism which can play a role in charm mesons formation.  
+\end{abstract}
+\end{titlepage}
+%
+%\input{alice_mynote.tex}               %%%%%%%%%%% put the body of the article here
+\tableofcontents
+\cleardoublepage
+\input{intro.tex}
+%\clearpage
+\input{rawyields.tex}
+%\clearpage
+\input{efficiencies.tex}
+%\clearpage
+\input{systematics.tex}
+%\clearpage
+\input{feeddown.tex}
+%\clearpage
+\input{resultsstd.tex}
+%\newpage
+%\input{results.tex}
+
+
+\clearpage
+\bibliographystyle{utphys}
+\bibliography{biblio.bib}
+\end{document}
