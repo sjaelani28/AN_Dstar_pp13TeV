@@ -1,0 +1,65 @@
+\section{Feed-down subtraction}
+As described in Sec.~\ref{sec:eff}, the prompt D meson production yields ${\rm
+d}N/{\rm d}\pt$ in Pb--Pb 
+collisions were obtained by subtracting the contribution of D mesons 
+from B decays with the same procedure used for the measurement of 
+the production cross sections in pp collisions~\cite{Acharya:2019mgn}.
+In detail, the feed-down contribution was estimated using 
+the beauty production cross section from the FONLL calculation,
+the B$\rightarrow$D decay kinematics from the EvtGen package,
+and the Monte Carlo efficiencies for feed-down D mesons. 
+For Pb--Pb collisions, 
+the FONLL feed-down cross section in pp at $\sqrt{s}=5.02~\TeV$ 
+was scaled by the average nuclear overlap function $\langle \TAA \rangle$ in
+each centrality class.
+Thus, omitting for brevity the symbol of the $\pt$-dependence $(\pt)$, 
+the fraction of prompt D mesons reads:
+\begin{equation}
+ \label{eq:fcNbMethod}
+ \begin{split}
+   f_{\rm prompt} &= 1-(N^{\rm D~feed-down~raw}/N^{\rm D~raw})=\\
+   &= 1 - \langle \TAA \rangle 
+   \cdot \left( \frac{{\rm d}^2 \sigma}{{\rm d}y \, {\rm d}\pt }
+\right)^{{\sf FONLL}} _{{\rm feed-down}} \cdot \RAA^{\rm feed-down} \cdot
+\frac{({\rm Acc}\times\epsilon)_{\rm feed-down}\cdot\Delta y \, \Delta\pt
+\cdot {\rm BR} \cdot N_{\rm evt}  }{ N^{\rm D~raw }  / 2} \, ,
+ \end{split}
+\end{equation}
+where $({\rm Acc}\times\epsilon)_{{\rm feed-down}}$ is the 
+acceptance-times-efficiency for feed-down D mesons and the factor 2 at the denominator
+comes for counting both particle and antiparticle
+are combined while in FONLL not. The nuclear modification factor of the feed-down D mesons, $\RAA^{\rm feed-down}$,
+is related to the nuclear modification of beauty production in Pb--Pb 
+collisions, which is currently unknown. Taking advantage of the
+recent non-prompt J/$\Psi$ results from the CMS collaboration we
+assumed for the correction that the nuclear modification factor 
+for feed-down is equal to two times the one of the prompt D mesons ($\RAA^{\rm feed-down}=2\RAA^{\rm prompt}$) and varied this hypothesis
+in the range $1<\RAA^{\rm feed-down}/\RAA^{\rm prompt}<3$ ($1/3<\RAA^{\rm feed-down}/\RAA^{\rm prompt}<3$ for \Dsubs)
+to determine the systematic uncertainty. In the left panel of Fig. \ref{fig:Dsfeeddown010} (Fig. \ref{fig:Dsfeeddown3050})
+the variation of $\RAA^{\rm prompt}$ for \Dsubs mesons in the 0--10\% (30--50\%) centrality class is shown as a function of
+this hypothesis for some (all) $\pt$ intervals of the analysis. The resulting fraction of prompt \Dsubs in the same centrality class is reported in the right panel of the same figure.
+In Fig.~\ref{fig:Dzerofeeddown_cent} and \ref{fig:Dzerofeeddown_semicent} the variation of $\RAA^{\rm prompt}$ for \Dzero mesons in the 0--10\% and 30-50\% centrality classes are reported as a function of this hypothesis for some \pt intervals of the analysis in the left panel of each figure. The resulting fraction of prompt \Dzero in the same centrality classes are reported as line histogram in the right panel of the Fig.~\ref{fig:Dzerofeeddown_cent} and \ref{fig:Dzerofeeddown_semicent}.
+In addition, to estimate the systematic uncertainty, the perturbative uncertainty on the FONLL beauty production cross section was considered, by varying the b quark mass and the factorization and renormalization scales as suggested in~\cite{Acharya:2019mgn}. 
+
+
+
+%======= Dstar =====
+\begin{figure}[tb]
+\begin{center}
+ \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/feed-down-syst-Dstar.pdf}
+\caption{Fraction of prompt \Dstar estimated using the FONLL-based approach.}
+\label{fig:Dstarfeeddown_cent}
+\end{center}
+\end{figure}
+
+
+
+
+\begin{figure}[tb]
+\begin{center}
+ \includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/RelativeSystematics.eps}
+\caption{Relative systematic uncertainties on the \pt -differential production cross
+section of prompt \Dstar mesons.}
+\label{fig:DstarSystSum}
+\end{center}
+\end{figure}
