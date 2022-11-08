@@ -7,15 +7,24 @@ The \Dstar meson and their anti-particles was reconstructed in the central rapid
 \subsection{Single track selections}
 \label{sec:single_track}
 
-The \Dstar candidates were formed by combining \Dzero candidates with soft pion $\pi^{+}$ tracks having $|\eta| <$ 0.8 and \pt $>$ 0.3 GeV/$c$, also satisfying the kITSrefit and kTPCrefit conditions. Moreover, for all the tracks, a minimum number of 70 crossed rows in the TPC together with a crossed rows over findable clusters ratio of 0.8 was required. A cut on the transverse impact parameter $d_0$ was applied for tracks with \pt $<$ 2 GeV/$c$, requiring $d_0 >$ 50 $\mu$m. These selections were meant to limit the CPU time needed to perform the track combinatorics when creating the AODs with the D meson candidates. Furthermore, all tracks, including the \Dstar soft pion, were selected requiring at least 70 (out of a maximum of 159) associated space points and $\chi^2$/$ndf <$ 2 in the TPC, and at least one associated hit in either of the two SPD layers \textbf{to be updated}.
+The \Dstar candidates were formed by combining \Dzero candidates with soft pion $\pi^{+}$ tracks having $|\eta| <$ 0.8 and \pt $>$ 0.3 GeV/$c$, also satisfying the kITSrefit and kTPCrefit conditions. Moreover, for all the tracks, a minimum number of 70 crossed rows in the TPC together with a crossed rows over findable clusters ratio of 0.8 was required, and $\chi^2$/$ndf <$ 2 in the TPC. A cut on the transverse impact parameter $d_0$ was applied for tracks with \pt $<$ 2 GeV/$c$, requiring $d_0 >$ 50 $\mu$m. These selections were meant to limit the CPU time needed to perform the track combinatorics when creating the AODs with the D meson candidates. Furthermore, the \Dstar soft pions were selected requiring at least one associated hit in either of the two SPD layers.
+% at least 70 out of 159 crossed TPC pad rows
+% SetMinNCrossedRowsTPC(70)
+% SetMinRatioCrossedRowsOverFindableClustersTPC(0.8)
+% Moreover, for all the tracks, a minimum number of 70 crossed rows in the TPC together with a crossed rows over findable clusters ratio of 0.8 was required. 
+
+
   
   
 %Secondary vertices of \Dzero and \Dplus meson candidates were constructed using tracks having $|\eta| <$ 0.8, \pt $>$ 0.5 GeV/$c$ and satisfying the kITSrefit and kTPCrefit conditions. Moreover, for all the tracks, a minimum number of 70 crossed rows in the TPC together with a crossed rows over findable clusters ratio of 0.8 was required. A cut on the transverse impact parameter $d_0$ was applied for tracks with \pt $<$ 2 GeV/$c$, requiring $d_0 >$ 50 $\mu$m. These selections were meant to limit the CPU time needed to perform the track combinatorics when creating the AODs with the D meson candidates. Furthermore, all tracks, including the \Dstar soft pion, were selected requiring at least 70 (out of a maximum of 159) associated space points and $\chi^2$/$ndf <$ 2 in the TPC, and at least one associated hit in either of the two SPD layers.
 
 \subsection{Topological and kinematic selections}
-For \Dstar -meson, the signal extraction is based on topological selections of displaced secondary vertices from \Dzero -meson candidates. For a detailed explanation of the procedure refer to \cite{Adam:2015sza}. The topological and kinematic cuts used to select the \Dstar -meson signal in pp collisions at \s 13 TeV are reported in Table~\ref{tab:CutDstar}.
+%The yield extraction was performed using a particle selection strategy that has high efficiency and high statistical significance for the \Dstar meson signal.
+%The same topological variables as in previous \Dstar -meson analyses were used in this analysis.
 
-The same topological and kinematic variables used for the analyses with the 2015 \pbpb data sample are reported. In particular, we recall the introduction of a topological variable introduced in \cite{Bruna:2016mgn} :
+The \Dstar signal extraction is based on topological selections of displaced secondary vertices from \Dzero -meson candidates. For a detailed explanation of the procedure refer to \cite{Adam:2015sza}. The topological and kinematic cuts used to select the \Dstar -meson signal in pp collisions at \s 13 TeV are reported in Table~\ref{tab:CutDstar} and ~\ref{tab:CutDstar2}.
+
+%The same topological and kinematic variables used for the analyses with the 2015 \pbpb data sample are reported. In particular, we recall the introduction of a topological variable introduced in \cite{Bruna:2016mgn} :
 
 % the normalized impact parameter (IP) resolution. It is defined as the difference between the expected impact parameter value $d^{exp}_{0,T,\phi} \approx L_{xy} \cdot sin(\theta_{xy})$, where $L_{xy}$ is the decay length on $xy$ plane and $\theta_{xy}$ is the angle between the reconstructed D meson and the charged particle on $xy$ plane, and the reconstructed one $d^{reco}_{0,T,\phi}$. This difference is then normalized by the square root of their respective uncertainties summed in quadrature. A selection based on this variable can reduce the feed-down D-meson efficiency while keeping higher that of prompt D mesons. The projections of the variables in the $xy$ plane are instead justified by the improving of the impact parameter resolution with respect to $z$-direction. More details on this variable can be found in \cite{Bruna:2016mgn}.
 
@@ -34,37 +43,37 @@ The same topological and kinematic variables used for the analyses with the 2015
       \pt (GeV/$c$) variable & [1-1.5] & [1.5-2] & [2-2.5] & [2.5-3] & [3-3.5] & [3.5-4] & [4-4.5] & [4.5-5] & [5-5.5] & [5.5-6] & [6-6.5] \\
       \hline
       \hline
-      $\Delta M_{D^0}$ (Gev)  & 0.024 & 0.032 & 0.032 & 0.04 & 0.043 & 0.045 & 0.055 & 0.06 & 0.074 & 0.74 & 0.094\\
+      $\Delta M_{\rm D^0}$ (GeV)  & 0.021 & 0.032 & 0.035 & 0.035 & 0.038 & 0.038 & 0.038 & 0.042 & 0.042 & 0.045 & 0.049\\
       \hline
-      DCA (cm) & 0.023 & 0.022 & 0.022 & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.02 &  0.02 \\
+      DCA (cm) & 0.022 & 0.038 & 0.03 & 0.03 & 0.03 & 0.03 & 0.042 & 0.042 & 0.05 & 0.05 &  0.1 \\
       \hline
-      $Cos(\theta^*)$ & 0.8 & 0.8 & 0.8 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0  \\
+      $Cos(\theta^*)$ & 0.9 & 0.9 & 0.8 & 0.8 & 0.8 & 0.8 & 0.9 & 0.9 & 1.0 & 1.0 & 1.0  \\
       \hline
-      \pt($K$) (GeV/$c$) & 1.0 &  1.0 & 1.0 & 1.0 & 1.0 & 0.9 & 0.9 & 0.7 &  & 0.5 & 0.5 \\
+      \pt($K$) (GeV/$c$) & 0.4 &  0.4 & 0.9 & 0.9 & 0.9 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 \\
       \hline
-      \pt($\pi$) (GeV/$c$) & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 0.5 & 0.5 & 0.5 \\
+      \pt($\pi$) (GeV/$c$) & 0.4 &  0.4 & 0.9 & 0.9 & 0.9 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 \\
       \hline
-      $d_{0,K}$ (cm) & 0.1 & 0.1 & 0.1  & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 & 0.15 & 0.15 & 0.2\\
+      $d_{0,K}$ (cm) & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1\\
 	  \hline
-	  $d_{0,\pi}$ (cm) & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 &0.15  &0.15  &0.2 \\
+	  $d_{0,\pi}$(cm)& 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 &0.1 &0.1 & 0.1 \\
 	  \hline
-	  $d_{0,K} \times d_{0,\pi}$ (10$^{-3}$) (cm$^2$) & -0.00032   &-0.0003  &  -0.0003& -0.00023 & -0.0001 &-0.0001  & -7.5 $\times 10^{-5}$ &-7.5 $\times 10^{-5}$  & -5 $\times 10^{-5}$ & -5 $\times 10^{-5}$ &0.0004 \\
+	  $d_{0,K} \times d_{0,\pi}$ (10$^{-3}$) (cm$^2$) & -0.00025   &-0.00025  &  -0.00019& -0.00019 & -0.000144 &-0.000144  & -2.8 $\times 10^{-5}$ &-2.8 $\times 10^{-5}$  & 5.5 $\times 10^{-5}$ & 5.5 $\times 10^{-5}$ &0.0001 \\
 	  \hline
-	  $Cos(\theta_{point})$ & 0.93 & 0.93 & 0.93  & 0.93 & 0.93 & 0.93 & 0.93 & 0.93 & 0.93 & 0.85 & 0.85  \\
+	  $Cos(\theta_{point})$ & 0.8 & 0.8 & 0.9  & 0.9 & 0.89 & 0.89 & 0.81 & 0.81 & 0.79 & 0.79 & 0.7  \\
 	  \hline
-	  $Cos(\theta_{point})XY$ & 0.998 & 0.998 & 0.998 & 0.998 & 0.998 & 0.998 & 0.998 & 0.99 & 0.99 & 0.9 &0.9 \\
-	  \hline
-	  $L_{XY}$ & 7 & 6.7 & 6.5 & 6.5 & 6.4 & 6.4 & 4.7 & 4.7 & 3.7 & 1 &  0 \\
-	  \hline
-      $\Delta M$ (GeV/$c^2$) & 0.8 & 0.8 & 0.8 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0  \\
+	  Inv. mass half width of \Dstar (GeV) & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3  \\
       \hline
-      \pt soft $\pi$ max (GeV/$c$) & 1.0 &  1.0 & 1.0 & 1.0 & 1.0 & 0.9 & 0.9 & 0.7 &  & 0.5 & 0.5 \\
-      \hline
-      \pt soft $\pi$ min (GeV/$c$) & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 0.5 & 0.5 & 0.5 \\
-      \hline
-      \Dstar var1  & 0.1 & 0.1 & 0.1  & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 & 0.15 & 0.15 & 0.2\\
+      hal width of $\Delta M$ (GeV)  & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3\\
 	  \hline
-	  \Dstar var2 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 &0.15  &0.15  &0.2 \\
+      \pt soft $\pi$ min (GeV/$c$) & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 \\
+      \hline
+      \pt soft $\pi$ max (GeV/$c$) & 0.3 & 0.3 & 0.4 & 0.4 & 0.6 & 0.6 & 0.6 & 100 & 100 & 100 & 100 \\
+      \hline
+	  $\theta$ & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0\\
+	  \hline
+	  $|Cos(\theta_{point})XY|$ & 0.88 & 0.88 & -1. & -1. & -1. & -1. & -1. & -1. & -1. & -1. & -1. \\
+	  \hline
+	  $\rm NL_{XY}$ & 3. & 3. & 3. & 3. & 0 & 0 & 0 & 0 & 0 & 0 &  0 \\
 	  \hline
     \end{tabular}
     }
@@ -82,37 +91,37 @@ The same topological and kinematic variables used for the analyses with the 2015
       \pt (GeV/$c$) variable & [6.5-7] & [7-7.5] & [7.5-8] & [8-9] & [9-10] & [10-12] & [12-16] & [16-24] & [24-36] & [36-50]  \\
       \hline
       \hline
-      $\Delta M_{D^0}$ (Gev)  & 0.024 & 0.032 & 0.032 & 0.04 & 0.043 & 0.045 & 0.055 & 0.06 & 0.074 & 0.74\\
+      $\Delta M_{\rm D^0}$ (GeV)  & 0.049 & 0.052 & 0.052 & 0.056 & 0.056 & 0.074 & 0.074 & 0.074 & 0.074 & 0.074 \\
       \hline
-      DCA (cm) & 0.023 & 0.022 & 0.022 & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.021 & 0.02 \\
+      DCA (cm) & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 10 & 10  \\
       \hline
-      $Cos(\theta^*)$ & 0.8 & 0.8 & 0.8 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0   \\
+      $Cos(\theta^*)$ & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 10 & 10   \\
       \hline
-      \pt($K$) (GeV/$c$) & 1.0 &  1.0 & 1.0 & 1.0 & 1.0 & 0.9 & 0.9 & 0.7 &  & 0.5 \\
+      \pt($K$) (GeV/$c$) & 1.0 &  0.6 & 0.6 & 0.6 & 0.6 & 0.6 & 0.6 & 0.5 & 0.2 & 0.2  \\
       \hline
-      \pt($\pi$) (GeV/$c$) & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 0.5 & 0.5 \\
+      \pt($\pi$) (GeV/$c$) & 1.0 &  0.6 & 0.6 & 0.6 & 0.6 & 0.6 & 0.6 & 0.5 & 0.2 & 0.2  \\
       \hline
-      $d_{0,K}$ (cm) & 0.1 & 0.1 & 0.1  & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 & 0.15 & 0.15\\
+      $d_{0,K}$ (cm) & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.15 & 0.5 & 0.5 \\
 	  \hline
-	  $d_{0,\pi}$ (cm) & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 &0.15  &0.15 \\
+	  $d_{0,\pi}$(cm)& 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.15 & 0.5 & 0.5 \\
 	  \hline
-	  $d_{0,K} \times d_{0,\pi}$ (10$^{-3}$) (cm$^2$) & -0.00032   &-0.0003  &  -0.0003& -0.00023 & -0.0001 &-0.0001  & -7.5 $\times 10^{-5}$ &-7.5 $\times 10^{-5}$  & -5 $\times 10^{-5}$ &0.0004 \\
+	  $d_{0,K} \times d_{0,\pi}$ (10$^{-3}$) (cm$^2$) & 0.0001  & 0.0001 & 0.00019 & 0.0001 & 0.0001 & 0.001  & 0.001 & 1. & 1. & 1.  \\
 	  \hline
-	  $Cos(\theta_{point})$ & 0.93 & 0.93 & 0.93  & 0.93 & 0.93 & 0.93 & 0.93 & 0.93 & 0.93 & 0.85   \\
+	  $Cos(\theta_{point})$ & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.7 & 0.2 & 0.2 & 0.2   \\
 	  \hline
-	  $Cos(\theta_{point})XY$ & 0.998 & 0.998 & 0.998 & 0.998 & 0.998 & 0.998 & 0.998 & 0.99 & 0.99 & 0.9 \\
-	  \hline
-	  $L_{XY}$ & 7 & 6.7 & 6.5 & 6.5 & 6.4 & 6.4 & 4.7 & 4.7 & 3.7 & 0 \\
-	  \hline
-	  $\Delta M$ (GeV/$c^2$) & 0.8 & 0.8 & 0.8 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0  \\
+	  Inv. mass half width of \Dstar (GeV) & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3  \\
       \hline
-      \pt soft $\pi$ max (GeV/$c$) & 1.0 &  1.0 & 1.0 & 1.0 & 1.0 & 0.9 & 0.9 & 0.7 &  & 0.5  \\
-      \hline
-      \pt soft $\pi$ min (GeV/$c$) & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 0.5 & 0.5  \\
-      \hline
-      \Dstar var1  & 0.1 & 0.1 & 0.1  & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 & 0.15 & 0.15 \\
+      hal width of $\Delta M$ (GeV)  & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 & 0.3 \\
 	  \hline
-	  \Dstar var2 & 0.1 & 0.1 & 0.1 & 0.1 & 0.1 & 0.12 & 0.12 & 0.15 &0.15  &0.15  \\
+      \pt soft $\pi$ min (GeV/$c$) & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05 & 0.05  \\
+      \hline
+      \pt soft $\pi$ max (GeV/$c$) & 100 & 100 & 100 & 100 & 100 & 100 & 100 & 100 & 100 & 100  \\
+      \hline
+	  $\theta$ & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 & 1.0 \\
+	  \hline
+	  $|Cos(\theta_{point})XY|$ & -1. & -1. & -1. & -1. & -1. & -1. & -1. & -1. & -1. & -1. \\
+	  \hline
+	  $\rm NL_{XY}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
 	  \hline
     \end{tabular}
     }
@@ -122,55 +131,34 @@ The same topological and kinematic variables used for the analyses with the 2015
 
 \subsection{Particle identification}
 \label{sec:pid_sel}
-The identification of the charged kaons and pions in the TPC and TOF detectors provide an additional information for the background rejection in the low momentum region. In order to assign K and/or $\pi$ masses to the decay tracks, cuts are applied to the difference in the expected and measured signals, which are the specific energy deposited (d$E$/d$x$) in the TPC and the time-of-flight for the TOF. A 3$\sigma$ compatibility was required to \Dzero, \Dstar and \Dplus candidate's daughters. When tracks were without TOF signal, only the TPC particle identification was used. Tracks with contradicting particle identification were considered to be non-identified and retained for further analysis. 
-For the \Dsubs, cuts were applied to the difference between the measured signals and those expected for a pion or a kaon. For \pt $<$ 8 GeV/$c$, where the signal over background is small, a track was considered compatible with the kaon or pion hypothesis if both its d$E$/d$x$ and time-of-flight were within 3$\sigma$ from the expected values. Tracks without a TOF signal (mostly at low momentum) were identified using only the TPC information and requiring a 2$\sigma$ compatibility with the expected specific energy loss. Triplets of selected tracks were required to have two tracks compatible with the kaon hypothesis and one with the pion hypothesis. In addition, since the decay particle with opposite charge sign has to be a kaon, a triplet was rejected if the opposite-sign track was not compatible with the kaon hypothesis. This particle identification strategy, applied at low momentum, preserves about 85$\%$ of the \Dsubs signal.
+The identification of the charged kaons and pions in the TPC and TOF detectors provide an additional information for the background rejection in the low momentum region. In order to assign K and/or $\pi$ masses to the decay tracks, cuts are applied to the difference in the expected and measured signals, which are the specific energy deposited (d$E$/d$x$) in the TPC and the time-of-flight for the TOF. A 3$\sigma$ compatibility was required to \Dstar candidate's daughters. When tracks were without TOF signal, only the TPC particle identification was used. Tracks with contradicting particle identification were considered to be non-identified and retained for further analysis. 
+%For the \Dsubs, cuts were applied to the difference between the measured signals and those expected for a pion or a kaon. For \pt $<$ 8 GeV/$c$, where the signal over background is small, a track was considered compatible with the kaon or pion hypothesis if both its d$E$/d$x$ and time-of-flight were within 3$\sigma$ from the expected values. Tracks without a TOF signal (mostly at low momentum) were identified using only the TPC information and requiring a 2$\sigma$ compatibility with the expected specific energy loss. Triplets of selected tracks were required to have two tracks compatible with the kaon hypothesis and one with the pion hypothesis. In addition, since the decay particle with opposite charge sign has to be a kaon, a triplet was rejected if the opposite-sign track was not compatible with the kaon hypothesis. This particle identification strategy, applied at low momentum, preserves about 85$\%$ of the \Dsubs signal.
 
 \subsection{Signal extraction}
 \label{sec:sign_extr}
-The \Dzero and \Dsubs raw yields were extracted by performing a fit to the invariant mass distribution with a function composed of a Gaussian for the signal and an exponential to interpolate the background shape. In particular, for \Dzero the exponential is used for \pt $>$ 3 GeV/$c$, while a pol3 and pol2 where used for 1-2 GeV/$c$ and 2-3 GeV/$c$ bins, respectively. In case of \Dplus, signals are fitted with Gaussian and background is fitted with Polynomial2 which describes the shape of the background reasonably well. In the case of the \Dstar the fit was performed to the mass difference $\Delta M$ = $M$(K$\pi\pi$) - $M$(K$\pi$) distributions and the term describing the background shape is an exponential convoluted with a power law according to the equation:
+%The \Dstar raw yields were extracted by performing a fit to the invariant mass distribution with a function composed of a Gaussian for the signal and an exponential to interpolate the background shape. In particular, for \Dzero the exponential is used for \pt $>$ 3 GeV/$c$, while a pol3 and pol2 where used for 1-2 GeV/$c$ and 2-3 GeV/$c$ bins, respectively. 
+
+%In case of \Dplus, signals are fitted with Gaussian and background is fitted with Polynomial2 which describes the shape of the background reasonably well. 
+
+The \Dstar raw yields were extracted by performing a fit to the mass difference $\Delta M$ = $M$(K$\pi\pi$) - $M$(K$\pi$) distributions and the term describing the background shape is an exponential convoluted with a power law according to the equation:
 \begin{equation}
 	f_{bkg} = a\sqrt{\Delta M - m_{\pi}}\cdot e^{b(\Delta M - m_{\pi})}
 \end{equation}
 where $m_{\pi}$ is the pion mass and $a$ and $b$ are free parameters.
 
-For all the four mesons the signal was extracted in the 0--10$\%$ centrality class in several transverse momentum regions: 
-\begin{itemize}
-	%\item for \Dzero in the range 1-50 GeV/$c$;
-	\item for \Dstar in the range 1-50 GeV/$c$;
-	%\item for \Dplus in the range 2-50 GeV/$c$;
-	%\item for \Dsubs in the range 3-36 GeV/$c$;
-\end{itemize} 
-The invariant-mass distributions obtained in 0--10$\%$ centrality class are reported in Fig.~\ref{fig:DzeroInvMassFits_cent_lowpt,fig:DzeroInvMassFits_cent_highpt} for \Dzero, in Fig.~\ref{fig:Dstar_InvMass} for \Dstar, in Fig.~\ref{fig:Dplus_InvMass}  for \Dplus and in Fig.~\ref{fig:DsubsInvMassFits_cent} for \Dsubs. For the \Dzero in the \pt bin 36-50 GeV/$c$, the fit is performed by fixing the mean  and the width to the values obtained from the MC, once it was checked that the MC properly reproduce the mean and width of the \Dzero Gaussian peak.
-
+The \Dstar $\Delta M$ invariant mass distribution is shown in Figure~\ref{fig:Dstar_InvMass}. For \pt 1-1.5 GeV/$c$, the Power function was used to described the background shape. Figures ~\ref{fig:Dstar_compar} show that the Power function was better to describe the background shape than the function mentioned above, Power Law$\times$Exponential function. The \Dstar signal was successfully extracted in the range $1<$\pt$<50$ GeV/$c$. The goodness of the mass fit against the Monte Carlo (MC) expectations was checked in terms of mass peak $\sigma$ and position.
+The comparisons of the Gaussian width and mean of the \Dstar meson mass peaks in data and MC are reported in ~\ref{fig:Dstar_Mean_width}.
 
 
 % Dstar 0-10% InvMass plot
 \begin{figure}[tb]
 \begin{center}
  \includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/DstarInvMass_new.pdf}
-\caption{Invariant mass distributions of  (\Dstar -- \Dzero) candidates and charge conjugates in the range 1$<$ \pt$<$ 50 GeV/$c$.}
+\caption{Invariant mass distributions of  (\Dstar -- \Dzero) candidates and charge conjugates in the range 1$<$\pt$<$50 GeV/$c$.}
 \label{fig:Dstar_InvMass}
 \end{center}
 \end{figure}
 
-
-Similarly the signal for all the four mesons was extracted in the 30--50$\%$ centrality class in several transverse momentum regions: 
-\begin{itemize}
-	%\item for \Dzero in the range 1-50 GeV/$c$;
-	\item for \Dstar in the range 2-36 GeV/$c$;
-	%\item for \Dplus in the range 2-50 GeV/$c$;
-	%\item for \Dsubs in the range 3-24 GeV/$c$;
-\end{itemize} 
-
-The invariant mass distributions obtained in 30--50$\%$ centrality class are reported in Fig.~\ref{fig:Dstar_InvMass2} for \Dstar.
-
-
-% Dstar 30-50%
-
-
-The goodness of the mass fit against the Monte
-Carlo expectations was checked in terms of mass peak $\sigma$ and position.
-The comparisons of the Gaussian width and mean of the \Dstar meson mass peaks in data and Monte Carlo are reported in ~\ref{fig:Dstar_Mean_width}.
 
 % Dstar Mean and width Data vs MC 0-10%
 
@@ -180,8 +168,33 @@ The comparisons of the Gaussian width and mean of the \Dstar meson mass peaks in
 \begin{center}
  \includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/DstarMean-position.png}
  \includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/DstarWidth_sigma.png}
-\caption{Comparison of Gaussian mean (left) and width (right) extracted from the invariant-mass fits of \Dstar candidates (black) and the MC simulation (red).}
+\caption{Comparison of Gaussian mean (top) and width (bottom) extracted from the invariant-mass fits of \Dstar
+candidates (black) and the MC simulation (red).}
 \label{fig:Dstar_Mean_width}
+\end{center}
+\end{figure}
+
+% Dstar Mean and width Data vs MC 30-50%
+\begin{figure}[tb]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Figure_01.png} 
+\includegraphics[width=0.32\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_std_bkg_func_1-1dot5GeV.png} 
+\includegraphics[width=0.32\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_std_bkg_func_1dot5-2GeV.png}
+\includegraphics[width=0.32\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_std_bkg_func_2-2dot5GeV.png} 
+\caption{The \Dstar $\Delta M$ invariant mass distribution for \pt range 1-2.5 GeV/$c$ (top rows) with the Power Law$\times$Exponential function for describing the background shape and the residual plots (bottom rows).}
+% The \Dstar $\Delta M$ invariant mass distribution for \pt range 1-2.5 GeV/$c$ (top rows) using the Power Law$\times$Exponential function and the residual plots (bottom rows).
+\label{fig:Dstar_compar}
+\end{center}
+\end{figure}
+
+\begin{figure}[tb]
+\begin{center}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Figure_01.png}
+\includegraphics[width=0.32\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_Pow_bkg_func_1-1dot5GeV.png} 
+\includegraphics[width=0.32\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_Pow_bkg_func_1dot5-2GeV.png}
+\includegraphics[width=0.32\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_Pow_bkg_func_2-2dot5GeV.png} 
+\caption{The \Dstar $\Delta M$ invariant mass distribution for \pt range 1-2.5 GeV/$c$ (top rows) with the Power Law function for describing the background shape and the residual plots (bottom rows).}
+\label{fig:Dstar_compar}
 \end{center}
 \end{figure}
 
