@@ -271,7 +271,7 @@ repeating the analysis varying the applied selection criteria.
 %per variable basis, reconstructing the yields, comparing them to the yields obtained with a reference set of
 %cuts and looking for possible trends/biases of the reconstructed yield as a function of the cut strength. The result of this study for each \pt bin is shown n Figs.~\ref{fig:DsCutSyst010_1} and~\ref{fig:DsCutSyst010_1}, where the variations of the raw yield, prompt and feed-down \Dsubs efficiency, significance, signal-to-background ratio, and corrected yield are plotted as a function of the cut set tested. Finally the distribution of the variation of the corrected yield is shown. All the trials for which the extracted yield had a significance larger than 3 and a variation of the efficiency larger than 1\% were taken into account. The systematic uncertainty was assigned considering the rms and the deviation from unity of these distributions. The values are reported in Table~\ref{tab:DsCutSyst010}. 
 
-The systematic scan for \Dstar -meson from loose to tight cuts was done by varying the variables: dca, d0 pion and d0 kaon, d0$\times$d0, cosine$\theta$ point, and normalised decay length. The result of this study is shown in figure~\ref{fig:DstarCutVar010}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested. The systematic values are reported in Table~\ref{tab:DstarCutSyst010}.
+The systematic scan for \Dstar -meson from loose to tight cuts was done by varying the variables: DCA, d$_0$ pion and d$_0$ kaon, d0$\times$d0, cosine$\theta$ point, and normalised decay length. The result of this study is shown in figure~\ref{fig:DstarCutVar010}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested. The systematic values are reported in Table~\ref{tab:DstarCutSyst010}.
 
 %For the \Dplus meson, a systematic scan from loose to tight cuts was done by varying the variables. The result of this study is shown in Figs.~\ref{fig:DplusCutVar010} and ~\ref{fig:DplusCutVar3050}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested.
 
@@ -352,107 +352,79 @@ The systematic scan for \Dstar -meson from loose to tight cuts was done by varyi
 \label{sec:gen_pt_syst}
 Another source of systematic we investigated is the one arising from the D meson \pt shape assumed in the Monte Carlo used for corrections. In our simulation the D mesons are folded in the HIJING event using PYTHIA and as a result the \pt shape of the D mesons can be biased leading to an effect in the final efficiency used for corrections. In order to check the stability of our efficiencies against the change in \pt shape and to define a systematic uncertainty it was decided to implement several set of weights. 
 
-For the \Dsubs meson, the \pt shapes provided by different models were taken into account. For the default value, the \pt shape of TAMU was considered, since it implements both the in-medium energy loss and the enhanced \Dsubs production due to the hadronisation via coalescence in a strange-rich medium. For the variation, the shapes of PHSD, Catania models, which also provide predictions for the \Dsubs mesons were considered. In addition, the MC@sHQ model for non-strange D mesons was considered to take into account a scenario in which the \Dsubs is not enhanced and as extreme case FONLL that assumes no suppression. 
+%The \pt shapes 
 
-The \pt shapes and the corresponding \pt weights, obtained by dividing each shape by the one of the MC simulation, are reported in Fig.~\ref{fig:DsPtWeights010} and Fig.~\ref{fig:DsPtWeights3050} for the 0--10\% and 30--50\% centrality classes. The variation of the efficiency of prompt \Dsubs mesons is reported in Fig.~\ref{fig:DsPtShapeSyst010} and Fig.~\ref{fig:DsPtShapeSyst3050}. For the 0--10\% centrality class, 2\% systematic was assigned in the range $3<$\pt$<12~\GeV/c$, while no systematic uncertainty was assigned for \pt$>12~\GeV/c$.
-For the 30--50\% centrality class, 3\% systematic was assigned in the range $3<$\pt$<6~\GeV/c$, 1\%  in the range $8<$\pt$<12~\GeV/c$ while no systematic uncertainty was assigned for \pt$>12~\GeV/c$.
+%For the \Dsubs meson, the \pt shapes provided by different models were taken into account. For the default value, the \pt shape of TAMU was considered, since it implements both the in-medium energy loss and the enhanced \Dsubs production due to the hadronisation via coalescence in a strange-rich medium. For the variation, the shapes of PHSD, Catania models, which also provide predictions for the \Dsubs mesons were considered. In addition, the MC@sHQ model for non-strange D mesons was considered to take into account a scenario in which the \Dsubs is not enhanced and as extreme case FONLL that assumes no suppression. 
 
-For the non-strange D mesons 0--10\% centrality class, the re-weighted shape was obtained from the mixture of the measured \Dzero corrected yield shape with FONLL predictions, used in \pt regions where the measurement is not feasible or not precise. Then, other \pt weight was considered to check the stability of the efficiencies against the \pt shape of the generated D mesons. For the 0--10\% centrality class, the systematic uncertainty was evaluated comparing the central values of the efficiency obtained using the FONLL times LBT. For the 30--50\% centrality class, the systematic uncertainty was evaluated comparing the central values of the efficiency (applying FONLL5andBAMPS weight) to that obtained applying the FONLL weight.
+%The \pt shapes and the corresponding \pt weights, obtained by dividing each shape by the one of the MC simulation, are reported in Fig.~\ref{fig:DsPtWeights010} and Fig.~\ref{fig:DsPtWeights3050} for the 0--10\% and 30--50\% centrality classes. The variation of the efficiency of prompt \Dsubs mesons is reported in Fig.~\ref{fig:DsPtShapeSyst010} and Fig.~\ref{fig:DsPtShapeSyst3050}. For the 0--10\% centrality class, 2\% systematic was assigned in the range $3<$\pt$<12~\GeV/c$, while no systematic uncertainty was assigned for \pt$>12~\GeV/c$.
+%For the 30--50\% centrality class, 3\% systematic was assigned in the range $3<$\pt$<6~\GeV/c$, 1\%  in the range $8<$\pt$<12~\GeV/c$ while no systematic uncertainty was assigned for \pt$>12~\GeV/c$.
+
+The systematic uncertainty due to a possible diﬀerence between the real and simulated D-meson transverse momentum distributions was investigated. The uncertainty was estimated by weighting the assumed PYTHIA8 \Dstar \pt distribution in simulation with alternative \pt shapes. The systematic uncertainty was evaluated comparing the central values of the efficiency obtained using the FONLL \pt weight. The \pt shapes and the corresponding \pt weights, obtained by dividing each shape by the one of the MC simulation, are reported in figure~\ref{fig:DstarPtWeights010} and \ref{fig:DstarPtWeights010_2}. A 3\% systematic was assigned in the range $1<$\pt$<1.5~\GeV/c$, 0.5\%  in the range $1.5<$\pt$<2~\GeV/c$ while no systematic uncertainty was assigned for \pt$>2~\GeV/c$. \\
+
+
+%The re-weighted shap for the \Dstar -mesone was obtained from the mixture of the measured \Dzero corrected yield shape with FONLL predictions, used in \pt regions where the measurement is not feasible or not precise. Then, other \pt weight was considered to check the stability of the efficiencies against the \pt shape of the generated D mesons. For the 0--10\% centrality class, the systematic uncertainty was evaluated comparing the central values of the efficiency obtained using the FONLL times LBT. For the 30--50\% centrality class, the systematic uncertainty was evaluated comparing the central values of the efficiency (applying FONLL5andBAMPS weight) to that obtained applying the FONLL weight.
 
 
 %======= Dstar =======
-\begin{figure}[tb]
+\begin{figure}[!htb]
 \begin{center}
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/MCpTShape_syst.png}
- \includegraphics[width=0.95\textwidth]{figures/Dstar/pp13TeV/ratio-cross-section-MC-pT-shpae.pdf}
-\caption{Relative change in efficiencies by using PYTHIA8 (central) with respect to FONLL5anddata (syatematic) weight.}
+ \caption{Relative change in efficiencies by using PYTHIA8 (central) with respect to FONLL (syatematic) weight.}
 \label{fig:DstarPtWeights010}
+\end{center}
+\end{figure}
+
+\begin{figure}[!htb]
+\begin{center}
+ \includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/ratio-cross-section-MC-pT-shpae.pdf} 
+\caption{Relative change in efficiencies by using PYTHIA8 (central) with respect to FONLL (syatematic) weight.}
+\label{fig:DstarPtWeights010_2}
 \end{center}
 \end{figure}
 %======= Dstar =======
 
 
 
-\begin{table}[htbp]
- \begin{center}
-  \begin{tabular}{|c|c|c|c|}
-\hline
-\pt ($\GeV/c$) &  \Dzero & \Dplus & \Dstar \\
-\hline
-1.0-1.5 & X & - & -\\
-\hline
-1.5-2.0 & X & - & -\\
-\hline
-2.0-2.5 & X & - & -\\
-\hline
-2.5-3.0 & X & 2 & -\\
-\hline
-3.0-3.5 & X & 1 & 1\% \\
-\hline
-3.5-4.0 & X & 1 & 0.5\% \\
-\hline
-4.0-4.5 & X & 1 & 0\\
-\hline
-4.5-5.0 & X & 1 & 0\\
-\hline
-5.0-5.5 & X & 0 & 0\\
-\hline
-5.5-6.0 & X & 0 & 0\\
-\hline
-6.0-6.5 & X & 0 & 0\\
-\hline
-6.5-7.0 & X & 0 & 0\\
-\hline
-7.0-7.5 & X & 0 & 0\\
-\hline
-7.5-8.0 & X & 0 & 0\\
-\hline
-8.0-9.0 & X & 0 & 0\\
-\hline
-9.0-10.0 & X & 0 & 0\\
-\hline
-10.0-12.0 & X & 0 & 0\\
-\hline
-12.0-16.0 & X & 0 & 0\\
-\hline
-16.0-24.0 & X & 0 & 0\\
-\hline
-24.0-36.0 & X & 0 & 0\\
-\hline
-36.0-50.0 & X & 0 & -\\
-\hline
-  \end{tabular}
- \end{center}
- \caption{Systematic uncertainty estimated with the MC \pt shape study for the \Dzero, \Dplus, and \Dstar mesons in the 0--10\% centrality class.}
- \label{tab:D0DplusDstarMCpTshape010}
-\end{table} 
 
 \clearpage
 \subsection{PID efficiency}
-The systematic uncertainty on the PID selection efficiency was evaluated with a per-track study, using relatively pure samples of pions and kaons. Pions were selected from $\rm K_{\rm s}^0$ and $\Lambda$ decays, while kaons in the TPC (TOF) were selected applying a tight selection on the PID signal in the TOF (TPC) of $|N_{\sigma}(\rm K)|<0.2$.  
 
-However, for this data sample, a discrepancy between the TPC PID efficiency in data and MC simulation up to 5\%, 15\%, 30\% for a $3\,\sigma$, $2\,\sigma$, and $1\,\sigma$ selection, respectively, was observed. This was caused by an imperfect calibration of the expected $\de E/\de x$ for the different hadron species in the data, which was reflected in a deviation of the $N_{\sigma}^{\rm TPC}$ distributions from the Normal distribution. In order to avoid large biases in the D-meson measurement, a post-calibration procedure was applied to correct the $N_{\sigma}^{\rm TPC}$ values. In particular, the distributions obtained from the pure samples of pions and kaons were fitted with a Gaussian function to extract the mean, $\langle N_{\sigma}^{\rm TPC}\rangle$, and the width, $\sigma(N_{\sigma}^{\rm TPC})$, of the uncalibrated distributions of pions and kaons. The extracted parameters were then used to compute the corrected $N_{\sigma}^{\rm TPC, corr}$ value for each track as
-\begin{equation}
-N_{\sigma}^{\rm TPC, corr} (X) = \frac{N_{\sigma}^{\rm TPC} (X)-\langle N_{\sigma}^{\rm TPC} (X) \rangle}{\sigma(N_{\sigma}^{\rm TPC} (X))},
-\end{equation}
-where $X$ stands for a given mass hypothesis, i.e. pion or kaon. This procedure was performed in intervals of track momentum and pseudorapidity. Figures~\ref{fig:NsigmaTPCuncorr18q} and~\ref{fig:NsigmaTPCuncorr18r} show the $N_{\sigma}^{\rm TPC}$ distributions as a function of pseudorapidity before the post calibration for the LHC18q and LHC18r periods, respectively, while Fig.~\ref{fig:NsigmaTPCcorr} after the post-calibration for both the periods for the 0--10\% centrality class. Samples of pions, kaons and protons independent of the one used to compute the correction were used to cross check the goodness of the post-calibration. The mean value of the distribution before the correction is shifted towards negative values, and shows a clear $\eta$-dependence. The corrected distribution is constantly centred at zero as a function of $\eta$. The residual deviation from unity in the kaon and proton distributions is due to residual contamination in the samples.
+The systematic eﬀect due to the particle identification (PID) selections was studied by repeating the analysis without PID selection. The uncertainty was evaluated by comparing the corrected yield ratio obtained with and without PID, which is shown in figure~\ref{fig:PIDsyst} and \ref{fig:PIDsyst2}. All the points are compatible with unity, most of them at better then 1$\sigma$ level. Therefore, no systematic uncertainty was assigned to PID eﬃciency.
+
+
+
+%The systematic uncertainty on the PID selection efficiency was evaluated with a per-track study, using relatively pure samples of pions and kaons. Pions were selected from $\rm K_{\rm s}^0$ and $\Lambda$ decays, while kaons in the TPC (TOF) were selected applying a tight selection on the PID signal in the TOF (TPC) of $|N_{\sigma}(\rm K)|<0.2$.  
+
+%However, for this data sample, a discrepancy between the TPC PID efficiency in data and MC simulation up to 5\%, 15\%, 30\% for a $3\,\sigma$, $2\,\sigma$, and $1\,\sigma$ selection, respectively, was observed. This was caused by an imperfect calibration of the expected $\de E/\de x$ for the different hadron species in the data, which was reflected in a deviation of the $N_{\sigma}^{\rm TPC}$ distributions from the Normal distribution. In order to avoid large biases in the D-meson measurement, a post-calibration procedure was applied to correct the $N_{\sigma}^{\rm TPC}$ values. In particular, the distributions obtained from the pure samples of pions and kaons were fitted with a Gaussian function to extract the mean, $\langle N_{\sigma}^{\rm TPC}\rangle$, and the width, $\sigma(N_{\sigma}^{\rm TPC})$, of the uncalibrated distributions of pions and kaons. The extracted parameters were then used to compute the corrected $N_{\sigma}^{\rm TPC, corr}$ value for each track as
+%\begin{equation}
+%N_{\sigma}^{\rm TPC, corr} (X) = \frac{N_{\sigma}^{\rm TPC} (X)-\langle N_{\sigma}^{\rm TPC} (X) \rangle}{\sigma(N_{\sigma}^{\rm TPC} (X))},
+%\end{equation}
+%where $X$ stands for a given mass hypothesis, i.e. pion or kaon. This procedure was performed in intervals of track momentum and pseudorapidity. Figures~\ref{fig:NsigmaTPCuncorr18q} and~\ref{fig:NsigmaTPCuncorr18r} show the $N_{\sigma}^{\rm TPC}$ distributions as a function of pseudorapidity before the post calibration for the LHC18q and LHC18r periods, respectively, while Fig.~\ref{fig:NsigmaTPCcorr} after the post-calibration for both the periods for the 0--10\% centrality class. Samples of pions, kaons and protons independent of the one used to compute the correction were used to cross check the goodness of the post-calibration. The mean value of the distribution before the correction is shifted towards negative values, and shows a clear $\eta$-dependence. The corrected distribution is constantly centred at zero as a function of $\eta$. The residual deviation from unity in the kaon and proton distributions is due to residual contamination in the samples.
 
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/rawyield_ratio_PID_noPID-new.pdf}
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/prompt_PID_noPID_ratio-v3.pdf}
- \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/cross-section-comaprison-PID-noPID.pdf}
- \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/cross-section-ratio_PID_noPID-updated.pdf}
+ \caption{PID systematic \Dstar meson.}
+\label{fig:PIDsyst}
+\end{center}
+\end{figure}
+
+ 
+\begin{figure}[tb]
+\begin{center} 
+ \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/cross-section-comaprison-PID-noPID.pdf}
+ \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/cross-section-ratio_PID_noPID-updated.pdf}
 \caption{PID systematic \Dstar meson.}
-\label{fig:NsigmaTPCuncorr18q}
+\label{fig:PIDsyst2}
 \end{center}
 \end{figure}
 
 
-In Figs.~\ref{fig:effPionPID} and~\ref{fig:effKaonPID} the data-to-MC ratios of the $N_{\sigma}^{\rm TPC}$ and $N_{\sigma}^{\rm TOF}$ selection efficiencies of pions and kaons as a function of $\pt$ in the 0--10\% centrality class for a $3\,\sigma$, $2\,\sigma$, and $1\,\sigma$ selection after the TPC recalibration procedure. A similar result was obtained in the 30--50\% centrality class. The deviation from unity of these ratios was considered as systematic uncertainty on the single track. 
+%In Figs.~\ref{fig:effPionPID} and~\ref{fig:effKaonPID} the data-to-MC ratios of the $N_{\sigma}^{\rm TPC}$ and $N_{\sigma}^{\rm TOF}$ selection efficiencies of pions and kaons as a function of $\pt$ in the 0--10\% centrality class for a $3\,\sigma$, $2\,\sigma$, and $1\,\sigma$ selection after the TPC recalibration procedure. A similar result was obtained in the 30--50\% centrality class. The deviation from unity of these ratios was considered as systematic uncertainty on the single track. 
 
 
-The single-track systematic uncertainty was propagated to the D mesons using the decay kinematics of the MC simulation used for the analysis. Figs.~\ref{fig:DsPIDsyst},~\ref{fig:DsPIDsystStrong} and~\ref{fig:DzeroPIDsyst} show the systematic uncertainty obtained for the \Dsubs and \Dzero mesons in the 0--10\% centrality class. The uncertainty for the conservative PID strategy was assigned to the \Dsubs-meson measurement for $\pt<8~\GeV/c$, while that for the strong PID strategy at higher $\pt$. 
+%The single-track systematic uncertainty was propagated to the D mesons using the decay kinematics of the MC simulation used for the analysis. Figs.~\ref{fig:DsPIDsyst},~\ref{fig:DsPIDsystStrong} and~\ref{fig:DzeroPIDsyst} show the systematic uncertainty obtained for the \Dsubs and \Dzero mesons in the 0--10\% centrality class. The uncertainty for the conservative PID strategy was assigned to the \Dsubs-meson measurement for $\pt<8~\GeV/c$, while that for the strong PID strategy at higher $\pt$. 
 
 
 \clearpage
@@ -466,29 +438,59 @@ The ITS-TPC matching efficiency was computed as the number of tracks successfull
 \end{equation}
 where $\epsilon_{\rm primary}({\rm MC})$ and $\epsilon_{\rm secondary}({\rm MC})$ are the ITS-TPC matching efficiencies for primary and secondary particles, which are determined via fits to the $d_0^{xy}$ distributions of the tracks. 
 
-In addition, it was checked if a discrepancy between the efficiency of the track-quality selections in data and in the MC simulation need to be considered. For this purpose, the D-meson cross section was re-evaluated with three alternative track-quality selection criteria, which include the selection of tracks with (i) a number TPC crossed rows larger than $120-5/(\pt~[\GeV/c])$ instead of the default value of 70, (ii)  the number of TPC clusters at least 0.65 times the number of TPC crossed rows and (iii) a ratio of crossed rows over findable clusters in the TPC larger than 0.9 (being the default 0.8). These variations are shown for the \Dsubs meson in the 0--10\% centrality class in Fig.~\ref{}.
-The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 1.5\% for the other D mesons (three-body decays), therefore a value equal to 0.5\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency. 
+In addition, it was checked if a discrepancy between the efficiency of the track-quality selections in data and in the MC simulation need to be considered. For this purpose, the D-meson cross section was re-evaluated with three alternative track-quality selection criteria, which include the selection of tracks with (i) a number TPC crossed rows larger than $120-5/(\pt~[\GeV/c])$, (ii)  the number of TPC clusters at least 0.65 times the number of TPC crossed rows and (iii) a ratio of crossed rows over findable clusters in the TPC larger than 0.9 (being the default 0.8). These variations are shown in figure~\ref{fig:TrackVariations}.
+The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 2\% for the soft pion track. Therefore a value equal to 3\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency for the \Dstar -meson. The systematic uncertainties are shown in figure~\ref{fig:DzeroTrackSyst}. The systematic values are reported in Table~\ref{tab:DstarTrackingSyst}.
+
+
+%, therefore a value equal to 0.5\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency. The systematic uncertainties obtained for \Dsubs and \Dzero mesons in the 0--10\% centrality class are shown in Figs.~\ref{fig:DsTrackSyst} and~\ref{fig:DzeroTrackSyst}.
 
 \begin{figure}[tb]
 \begin{center}
- \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-tracking-Dstar-D0-single-track.pdf}
- \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/tracking-soft-pion-ratio-cross-section.pdf}
+ \includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-tracking-Dstar-D0-single-track.pdf}
+ \includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/tracking-soft-pion-ratio-cross-section.pdf}
 \caption{Comparison of \Dstar corrected yield measured obtained with different TPC track-quality criteria.}
 \label{fig:TrackVariations}
 \end{center}
 \end{figure}
 
-Finally, the $\pt$-dependent per-track systematic uncertainty was propagated to the \Dsubs mesons via the kinematics of the \Dsubs daughter tracks, similarly to the procedure explained in the previous Section for the PID uncertainty. The systematic uncertainties obtained for \Dsubs and \Dzero mesons in the 0--10\% centrality class are shown in Figs.~\ref{fig:DsTrackSyst} and~\ref{fig:DzeroTrackSyst}.
+%Finally, the $\pt$-dependent per-track systematic uncertainty was propagated to the \Dsubs mesons via the kinematics of the \Dsubs daughter tracks, similarly to the procedure explained in the previous Section for the PID uncertainty. The systematic uncertainties obtained for \Dsubs and \Dzero mesons in the 0--10\% centrality class are shown in Figs.~\ref{fig:DsTrackSyst} and~\ref{fig:DzeroTrackSyst}.
 
 
 \begin{figure}[tb]
 \begin{center}
- \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/Dstar-ME-eff-final.pdf}
-\caption{Systematic uncertainty on tracking efficiency assigned to \Dstar mesons.}
+ \includegraphics[width=0.55\textwidth]{figures/Dstar/pp13TeV/Dstar-ME-eff-final.pdf}
+\caption{Systematic uncertainty on tracking efficiency.}
 \label{fig:DzeroTrackSyst}
 \end{center}
 \end{figure}
 
 
+\begin{table}[htbp]
+ \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\pt ($\GeV/c$) & 1-1.5 & 1.5-2 & 2-2.5 & 2.5-3 & 3-3.5 & 3.5-4 & 4-4.5 & 4.5-5 & 5-5.5 & 5.5-6 & 6-6.5 \\
+\hline
+Systematic values & 4.5\% & 4.5\% & 5\% & 5\% & 5\% & 5\% & 5.5\% & 5.5\% & 5.5\%& 5.5\% & 5.5\% \\
+\hline
+  \end{tabular}
+ \end{center}
+ %\caption{Systematic uncertainty from yield extraction.}
+ %\label{tab:DstarYieldSyst010}
+%\end{table} 
+
+%\begin{table}[htbp]
+ \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\pt ($\GeV/c$) & 6.5-7 & 7-7.5 & 7.5-8 & 8-9 & 9-10 & 10-12 & 12-16 & 16-24 & 24-36 & 36-50 \\
+\hline
+Systematic values & 6\% & 6\% & 6\% & 6\% & 6\%& 6\% & 6\% & 6.5\% & 6.5\% & 6.5\% \\
+\hline
+  \end{tabular}
+ \end{center}
+ \caption{Systematic uncertainty from tracking efficiency.}
+ \label{tab:DstarTrackingSyst}
+\end{table} 
 
 
