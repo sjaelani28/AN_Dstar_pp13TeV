@@ -10,12 +10,46 @@ The systematic uncertainty on the raw yield extraction was evaluated in each \pt
 	\item i) the invariant-mass bin width;
 	\item ii) lower limit of the fit;
 	\item iii) upper  limit  of  the  fit;
-	\item iv) the background fit function (2 cases: Power Law, Power Law $\times$ Exponential);
+	\item iv) the background fit function (2 cases: PowerLaw, Power Law $\times$ Exponential);
 \end{itemize}   
-In addition, all the fits were repeated with the sigma of the Gaussian function fixed to the values obtained from the MC simulation and the mean of the Gaussian function to the PDG value of the \Dstar mass. The fits which did not converge or had $\chi^2$/$ndf> $ 2.0 were rejected and not considered in the evaluation of the systematic uncertainty.  In addition, the results obtained with the fitting technique were compared to those obtained by counting the entries in the invariant mass histogram after subtracting the background counts calculated from the background fit function. Also for this check, a multiple trial approach was used. 
-The results are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYieldSyst010_2}, \ref{fig:DstarYieldSyst010_3}, \ref{fig:DstarYieldSyst010_4}, and \ref{fig:DstarYieldSyst010_5}. % for the \Dzero in Figs. XX and YY, for \Dstar in Figs. XX and YY, and for \Dsubs in Figs.~\ref{fig:DsYieldSyst010_1},~\ref{fig:DsYieldSyst010_2} and YY.
-%For the \Dzero mesons the reflections subtraction procedure does not show a systematic effect, thus there is no need to assign a systematic uncertainty, as already shown in \cite{Bruna:2016mgn}. For the systematic uncertainty we took it almost from the rms of fit results. If the central raw yield between the mean of fit and bin counting doesn't differ, we do not consider the effect of shift; if not, we add in quadrature to the rms the maximum difference between the central value and the mean of the fits or of the bin counting.
+In addition, all the fits were repeated with the sigma of the Gaussian function fixed to the values obtained from the MC simulation and the mean of the Gaussian function to the PDG value of the \Dstar mass. The fits which did not converge or had $\chi^2$/$ndf> $ 3.0 were rejected and not considered in the evaluation of the systematic uncertainty.  In addition, the results obtained with the fitting technique were compared to those obtained by counting the entries in the invariant mass histogram after subtracting the background counts calculated from the background fit function. Also for this check, a multiple trial approach was used. 
+The results are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYieldSyst010_2}, \ref{fig:DstarYieldSyst010_3}, \ref{fig:DstarYieldSyst010_4}, and \ref{fig:DstarYieldSyst010_5}. 
 
+For the first two \pt bins, some checks were performed to investigate the background fit function used in the trial, PowerLaw and Power Law $\times$ Exponential function. All the checks can be seen in figures \ref{fig:DstarYield_stdbkg}, \ref{fig:DstarYield_stdbkg_residual}, \ref{fig:DstarYield_Powerbkg}, \ref{fig:DstarYield_residual_power}, and \ref{fig:DstarYieldSyst010_33}. For \pt bin 1-1.5 GeV/$c$, the Power Law and Power Law $\times$ Exponential background function doesn't describe the invariant mass distribution. For \pt bin 1.5-2 GeV/$c$, the PowerLaw function leads to significantly larger widths. The numerical values of the systematic on yield extraction are reported in Tables~\ref{tab:DstarYieldSyst010_2}.% So that the systematic is smoothed down to 10%.
+
+
+
+\begin{table}[htbp]
+ \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\pt ($\GeV/c$) & 1-1.5 & 1.5-2 & 2-2.5 & 2.5-3 & 3-3.5 & 3.5-4 & 4-4.5 & 4.5-5 & 5-5.5 & 5.5-6 & 6-6.5 \\
+\hline
+Systematic values & 10\% & 10\% & 5\% & 2\% & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% \\
+\hline
+  \end{tabular}
+ \end{center}
+ %\caption{Systematic uncertainty from yield extraction.}
+ %\label{tab:DstarYieldSyst010}
+%\end{table} 
+
+%\begin{table}[htbp]
+ \begin{center}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+\pt ($\GeV/c$) & 6.5-7 & 7-7.5 & 7.5-8 & 8-9 & 9-10 & 10-12 & 12-16 & 16-24 & 24-36 & 36-50 \\
+\hline
+Systematic values & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% & 2\% & 2\% & 2\% \\
+\hline
+  \end{tabular}
+ \end{center}
+ \caption{Systematic uncertainty from yield extraction.}
+ \label{tab:DstarYieldSyst010_2}
+\end{table} 
+ 
+
+% for the \Dzero in Figs. XX and YY, for \Dstar in Figs. XX and YY, and for \Dsubs in Figs.~\ref{fig:DsYieldSyst010_1},~\ref{fig:DsYieldSyst010_2} and YY.
+%For the \Dzero mesons the reflections subtraction procedure does not show a systematic effect, thus there is no need to assign a systematic uncertainty, as already shown in \cite{Bruna:2016mgn}. For the systematic uncertainty we took it almost from the rms of fit results. If the central raw yield between the mean of fit and bin counting doesn't differ, we do not consider the effect of shift; if not, we add in quadrature to the rms the maximum difference between the central value and the mean of the fits or of the bin counting.
 
 
 \begin{figure}[!h]
@@ -198,7 +232,7 @@ The results are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYie
 \includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/multi_bin_bkg5std_1dot5-2GeV.png}
 %\includegraphics[width=0.5\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_36-50.eps}
 \caption{Yield extration for \pt 1-2 GeV/$c$ tested with only one background function.}
-%\label{fig:DstarYieldSyst010_3}
+\label{fig:DstarYieldSyst010_33}
 \end{center}
 \end{figure}
 
@@ -207,167 +241,9 @@ The results are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYie
 %======= Dstar 0-10======= multi-trial ===========
 
 
-The numerical values of the systematic on yield extraction are reported in Tables~\ref{tab:D0DplusDstarYieldSyst010}.
 
-\begin{table}[htbp]
- \begin{center}
-  \begin{tabular}{|c|c|c|c|}
-\hline
-\pt ($\GeV/c$) &  \Dzero & \Dplus & \Dstar \\
-\hline
-1.0-1.5 & X & - & -\\
-\hline
-1.5-2.0 & X & - & -\\
-\hline
-2.0-2.5 & X & - & -\\
-\hline
-2.5-3.0 & X & 0.05 & -\\
-\hline
-3.0-3.5 & X & 0.05 & 0.06\\
-\hline
-3.5-4.0 & X & 0.05 & 0.04\\
-\hline
-4.0-4.5 & X & 0.05 & 0.04\\
-\hline
-4.5-5.0 & X & 0.05 & 0.04\\
-\hline
-5.0-5.5 & X & 0.05 & 0.04\\
-\hline
-5.5-6.0 & X & 0.05 & 0.04\\
-\hline
-6.0-6.5 & X & 0.05 & 0.04\\
-\hline
-6.5-7.0 & X & 0.05 & 0.04\\
-\hline
-7.0-7.5 & X & 0.05 & 0.03\\
-\hline
-7.5-8.0 & X & 0.05 & 0.03\\
-\hline
-8.0-9.0 & X & 0.05 & 0.03\\
-\hline
-9.0-10.0 & X & 0.03 & 0.03\\
-\hline
-10.0-12.0 & X & 0.03 & 0.03\\
-\hline
-12.0-16.0 & X & 0.03 & 0.03\\
-\hline
-16.0-24.0 & X & 0.03 & 0.03\\
-\hline
-24.0-36.0 & X & 0.03 & 0.03\\
-\hline
-36.0-50.0 & X & 0.05 & 0.03\\
-\hline
-  \end{tabular}
- \end{center}
- \caption{Systematic uncertainty from yield extraction for the \Dzero, \Dplus and \Dstar mesons in the 0--10\% centrality class.}
- \label{tab:D0DplusDstarYieldSyst010}
-\end{table} 
 
-\begin{table}[htbp]
- \begin{center}
-  \begin{tabular}{|c|c|}
-\hline
-\pt ($\GeV/c$) &  \Dsubs \\
-\hline
-3.0-4.0 & 8\%\\
-\hline
-4.0-5.0 & 8\%\\
-\hline
-5.0-6.0 & 5\%\\
-\hline
-6.0-8.0 & 5\%\\
-\hline
-8.0-12.0 & 3\%\\
-\hline
-12.0-16.0 & 3\%\\
-\hline
-16.0-24.0 & 5\%\\
-\hline
-24.0-36.0 & 5\%\\
-\hline
-  \end{tabular}
- \end{center}
- \caption{Systematic uncertainty from yield extraction for the \Dsubs mesons in the 0--10\% centrality class.}
- \label{tab:DsYieldSyst010}
-\end{table} 
 
-\begin{table}[htbp]
- \begin{center}
-  \begin{tabular}{|c|c|c|c|}
-\hline
-\pt ($\GeV/c$) &  \Dzero & \Dplus & \Dstar \\
-\hline
-1.0-1.5 & X & - & -\\
-\hline
-1.5-2.0 & X & - & -\\
-\hline
-2.0-2.5 & X & 0.07 & 0.05\\
-\hline
-2.5-3.0 & X & 0.07 & 0.05\\
-\hline
-3.0-3.5 & X & 0.04 & 0.05\\
-\hline
-3.5-4.0 & X & 0.04 & 0.03\\
-\hline
-4.0-4.5 & X & 0.04 & 0.03\\
-\hline
-4.5-5.0 & X & 0.03 & 0.03\\
-\hline
-5.0-5.5 & X & 0.03 & 0.03\\
-\hline
-5.5-6.0 & X & 0.03 & 0.03\\
-\hline
-6.0-6.5 & X & 0.03 & 0.03\\
-\hline
-6.5-7.0 & X & 0.03 & 0.03\\
-\hline
-7.0-7.5 & X & 0.03 & 0.03\\
-\hline
-7.5-8.0 & X & 0.03 & 0.03\\
-\hline
-8.0-9.0 & X & 0.03 & 0.03\\
-\hline
-9.0-10.0 & X & 0.03 & 0.03\\
-\hline
-10.0-12.0 & X & 0.03 & 0.03\\
-\hline
-12.0-16.0 & X & 0.03 & 0.03\\
-\hline
-16.0-24.0 & X & 0.04 & 0.03\\
-\hline
-24.0-36.0 & X & 0.06 & 0.03\\
-\hline
-36.0-50.0 & X & 0.08 & -\\
-\hline
-  \end{tabular}
- \end{center}
- \caption{Systematic uncertainty from yield extraction for the \Dzero, \Dplus and \Dstar mesons in the 30--50\% centrality class.}
- \label{tab:D0DplusDstarYieldSyst3050}
-\end{table} 
-
-\begin{table}[htbp]
- \begin{center}
-  \begin{tabular}{|c|c|}
-\hline
-\pt ($\GeV/c$) &  \Dsubs \\
-\hline
-3.0-4.0 & 9\%\\
-\hline
-4.0-6.0 & 6\%\\
-\hline
-6.0-8.0 & 4\%\\
-\hline
-8.0-12.0 & 4\%\\
-\hline
-12.0-16.0 & 2\%\\
-\hline
-16.0-24.0 & 3\%\\
-\hline
-  \end{tabular}
- \end{center}
- \caption{Systematic uncertainty from yield extraction for the \Dsubs mesons in the 30--50\% centrality class.}
- \label{tab:DsYieldSyst3050}
-\end{table} 
 
 
 %#######################################################################
