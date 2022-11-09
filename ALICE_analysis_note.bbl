@@ -1,0 +1,47 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{Adam:2015sza}
+{\bfseries ALICE} Collaboration, J.~Adam {\em et~al.}, ``{Transverse momentum
+  dependence of D-meson production in Pb-Pb collisions at $
+  \sqrt{{\mathrm{s}}_{\mathrm{NN}}}=$ 2.76 TeV},''
+  \href{http://dx.doi.org/10.1007/JHEP03(2016)081}{{\em JHEP} {\bfseries 03}
+  (2016) 081}, \href{http://arxiv.org/abs/1509.06888}{{\ttfamily
+  arXiv:1509.06888 [nucl-ex]}}.
+
+\bibitem{Bruna:2016mgn}
+{\bfseries ALICE} Collaboration, ``Analysis note,''.
+  \url{https://alice-notes.web.cern.ch/node/576}.
+
+\bibitem{Sjostrand:2006za}
+T.~Sjostrand, S.~Mrenna, and P.~Skands, ``{PYTHIA 6.4 Physics and Manual},''
+  \href{http://dx.doi.org/10.1088/1126-6708/2006/05/026}{{\em JHEP} {\bfseries
+  05} (2006) 026},
+\href{http://arxiv.org/abs/hep-ph/0603175}{{\ttfamily arXiv:hep-ph/0603175
+  [hep-ph]}}.
+%%CITATION = HEP-PH/0603175;%%.
+
+\bibitem{Skands:2009zm}
+P.~Z. Skands, ``{The Perugia Tunes},'' in {\em {Proceedings, 1st International
+  Workshop on Multiple Partonic Interactions at the LHC (MPI08): Perugia,
+  Italy, October 27-31, 2008}}, pp.~284--297.
+\newblock 2009.
+\newblock
+\href{http://arxiv.org/abs/0905.3418}{{\ttfamily arXiv:0905.3418 [hep-ph]}}.
+\newblock
+%%CITATION = ARXIV:0905.3418;%%.
+
+\bibitem{Wang:1991hta}
+X.-N. Wang and M.~Gyulassy, ``{HIJING: A Monte Carlo model for multiple jet
+  production in p p, p A and A A collisions},''
+\href{http://dx.doi.org/10.1103/PhysRevD.44.3501}{{\em Phys. Rev.} {\bfseries
+  D44} (1991) 3501--3516}.
+%%CITATION = PHRVA,D44,3501;%%.
+
+\bibitem{Acharya:2019mgn}
+{\bfseries ALICE} Collaboration, S.~Acharya {\em et~al.}, ``{Measurement of
+  ${\rm D^0}$, ${\rm D^+}$, ${\rm D^{*+}}$ and ${{\rm D^+_s}}$ production in pp
+  collisions at $\sqrt{{\textit s}}$~=~5.02~TeV with ALICE},''
+\href{http://arxiv.org/abs/1901.07979}{{\ttfamily arXiv:1901.07979 [nucl-ex]}}.
+%%CITATION = ARXIV:1901.07979;%%.
+
+\end{thebibliography}\endgroup
