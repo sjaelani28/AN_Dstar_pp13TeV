@@ -7,16 +7,21 @@ Several sources of systematic errors were considered for the \Dstar -meson analy
 
 The systematic uncertainty on the raw yield extraction was evaluated in each \pt interval using a multiple trial approach. The fits to the invariant mass distributions were repeated several times varying:
 \begin{itemize}
-	\item i) the invariant-mass bin width;
-	\item ii) lower limit of the fit;
-	\item iii) upper  limit  of  the  fit;
-	\item iv) the background fit function (2 cases: PowerLaw, Power Law $\times$ Exponential);
-\end{itemize}   
-In addition, all the fits were repeated with the sigma of the Gaussian function fixed to the values obtained from the MC simulation and the mean of the Gaussian function to the PDG value of the \Dstar mass. The fits which did not converge or had $\chi^2$/$ndf> $ 3.0 were rejected and not considered in the evaluation of the systematic uncertainty.  In addition, the results obtained with the fitting technique were compared to those obtained by counting the entries in the invariant mass histogram after subtracting the background counts calculated from the background fit function. Also for this check, a multiple trial approach was used. 
+	\item i) the invariant-mass bin width (six different bin widths);
+	\item ii) lower limit of the fit (0.1395, 0.140, 0.1405);
+	\item iii) upper  limit  of  the  fit (0.165,0.163,0.161,0.159,0.157,0.155);
+	\item iv) the background fit function (2 cases: PowerLaw $a(x - m_\pi)^b$, PowerLaw $\times$ Exponential (Eq. 1));
+\end{itemize}  
+
+In addition bin counting at 3$\sigma$ was tested, and fixing the Gaussian sigma to the one extracted from the MC simulation and the mean of the Gaussian function to the PDG value of the \Dstar mass. The fits which did not converge or had $\chi^2$/$ndf> $ 3.0 were rejected and not considered in the evaluation of the systematic uncertainty.  In addition, the results obtained with the fitting technique were compared to those obtained by counting the entries in the invariant mass histogram after subtracting the background counts calculated from the background fit function. Also for this check, a multiple trial approach was used. 
 The results are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYieldSyst010_2}, \ref{fig:DstarYieldSyst010_3}, \ref{fig:DstarYieldSyst010_4}, and \ref{fig:DstarYieldSyst010_5}. 
 
 For the first two \pt bins, some checks were performed to investigate the background fit function used in the trial, PowerLaw and Power Law $\times$ Exponential function. All the checks can be seen in figures \ref{fig:DstarYield_stdbkg}, \ref{fig:DstarYield_stdbkg_residual}, \ref{fig:DstarYield_Powerbkg}, \ref{fig:DstarYield_residual_power}, and \ref{fig:DstarYieldSyst010_33}. For \pt bin 1-1.5 GeV/$c$, the Power Law and Power Law $\times$ Exponential background function doesn't describe the invariant mass distribution. For \pt bin 1.5-2 GeV/$c$, the PowerLaw function leads to significantly larger widths. The numerical values of the systematic on yield extraction are reported in Tables~\ref{tab:DstarYieldSyst010_2}.% So that the systematic is smoothed down to 10%.
 
+ 
+%In addition, all the fits were repeated with the sigma of the Gaussian function fixed to the values obtained from the MC
+
+ 
 
 
 \begin{table}[htbp]
@@ -250,21 +255,25 @@ Systematic values & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% & 2\% & 2\% & 2\% \\
 \clearpage
 \subsection{Selection efficiency}
 \label{sec:eff_syst}
-A further systematic uncertainty can arise from possible differences in the cut-variable
-shapes in data and Monte Carlo and due to residual misalignment. This
-sources where checked by repeating the analysis varying the
-selection cuts from the standard set of
-cuts. Moving the main cuts all left or all right may introduce a bias
-due to the fact that all the cuts goes in the same direction. Due to
-this concern, different sets of cuts, alternative to the standard one were tested. 
+The systematic uncertainty due to possible imperfections in the description in the simulations of the
+variables used in the geometrical selections of the \Dstar -meson displaced decay vertices was studied by
+repeating the analysis varying the applied selection criteria.
 
-For the \Dsubs meson, a systematic scan from loose to tight cuts was done on a variable
-per variable basis, reconstructing the yields, comparing them to the yields obtained with a reference set of
-cuts and looking for possible trends/biases of the reconstructed yield as a function of the cut strength. The result of this study for each \pt bin is shown n Figs.~\ref{fig:DsCutSyst010_1} and~\ref{fig:DsCutSyst010_1}, where the variations of the raw yield, prompt and feed-down \Dsubs efficiency, significance, signal-to-background ratio, and corrected yield are plotted as a function of the cut set tested. Finally the distribution of the variation of the corrected yield is shown. All the trials for which the extracted yield had a significance larger than 3 and a variation of the efficiency larger than 1\% were taken into account. The systematic uncertainty was assigned considering the rms and the deviation from unity of these distributions. The values are reported in Table~\ref{tab:DsCutSyst010}. 
+%A further systematic uncertainty can arise from possible differences in the cut-variable
+%shapes in data and Monte Carlo and due to residual misalignment. This
+%sources where checked by repeating the analysis varying the
+%selection cuts from the standard set of
+%cuts. Moving the main cuts all left or all right may introduce a bias
+%due to the fact that all the cuts goes in the same direction. Due to
+%this concern, different sets of cuts, alternative to the standard one were tested. 
 
-For the \Dstar meson, a systematic scan from loose to tight cuts was done by varying the variables: dca, d0$\times$d0, \pt kaon and \pt pion. The result of this study is shown in Figs.~\ref{fig:DstarCutVar010} and ~\ref{fig:DstarCutVar3050}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested.
+%For the \Dsubs meson, a systematic scan from loose to tight cuts was done on a variable
+%per variable basis, reconstructing the yields, comparing them to the yields obtained with a reference set of
+%cuts and looking for possible trends/biases of the reconstructed yield as a function of the cut strength. The result of this study for each \pt bin is shown n Figs.~\ref{fig:DsCutSyst010_1} and~\ref{fig:DsCutSyst010_1}, where the variations of the raw yield, prompt and feed-down \Dsubs efficiency, significance, signal-to-background ratio, and corrected yield are plotted as a function of the cut set tested. Finally the distribution of the variation of the corrected yield is shown. All the trials for which the extracted yield had a significance larger than 3 and a variation of the efficiency larger than 1\% were taken into account. The systematic uncertainty was assigned considering the rms and the deviation from unity of these distributions. The values are reported in Table~\ref{tab:DsCutSyst010}. 
 
-For the \Dplus meson, a systematic scan from loose to tight cuts was done by varying the variables. The result of this study is shown in Figs.~\ref{fig:DplusCutVar010} and ~\ref{fig:DplusCutVar3050}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested.
+The systematic scan for \Dstar -meson from loose to tight cuts was done by varying the variables: dca, d0 pion and d0 kaon, d0$\times$d0, cosine$\theta$ point, and normalised decay length. The result of this study is shown in figure~\ref{fig:DstarCutVar010}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested. The systematic values are reported in Table~\ref{tab:DstarCutSyst010}.
+
+%For the \Dplus meson, a systematic scan from loose to tight cuts was done by varying the variables. The result of this study is shown in Figs.~\ref{fig:DplusCutVar010} and ~\ref{fig:DplusCutVar3050}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested.
 
 
 
@@ -272,122 +281,66 @@ For the \Dplus meson, a systematic scan from loose to tight cuts was done by var
  \begin{center}
   \begin{tabular}{|c|c|c|c|}
 \hline
-\pt ($\GeV/c$) &  \Dzero & \Dplus & \Dstar \\
+\pt ($\GeV/c$) & Systematic values \\
 \hline
-1.0-1.5 & X & - & -\\
+1.0-1.5 & 10\% \\
 \hline
-1.5-2.0 & X & - & -\\
+1.5-2.0 & 6\%\\
 \hline
-2.0-2.5 & X & - & -\\
+2.0-2.5 & 6\%\\
 \hline
-2.5-3.0 & X & 10 & -\\
+2.5-3.0 & 4\%\\
 \hline
-3.0-3.5 & X & 6 & 12\% \\
+3.0-3.5 & 4\% \\
 \hline
-3.5-4.0 & X & 6 & 10\% \\
+3.5-4.0 & 2\% \\
 \hline
-4.0-4.5 & X & 6 & 10\% \\
+4.0-4.5 & 2\% \\
 \hline
-4.5-5.0 & X & 6 & 10\% \\
+4.5-5.0 & 2\% \\
 \hline
-5.0-5.5 & X & 6 & 8\% \\
+5.0-5.5 & 2\% \\
 \hline
-5.5-6.0 & X & 5 & 8\% \\
+5.5-6.0 & 2\% \\
 \hline
-6.0-6.5 & X & 5 & 8\% \\
+6.0-6.5 & 2\% \\
 \hline
-6.5-7.0 & X & 4 & 8\% \\
+6.5-7.0 & 2\% \\
 \hline
-7.0-7.5 & X & 4 & 8\% \\
+7.0-7.5 & 2\% \\
 \hline
-7.5-8.0 & X & 4 & 8\% \\
+7.5-8.0 & 2\% \\
 \hline
-8.0-9.0 & X & 3 & 8\% \\
+8.0-9.0 & 2\% \\
 \hline
-9.0-10.0 & X & 3 & 8\% \\
+9.0-10.0 & 2\% \\
 \hline
-10.0-12.0 & X & 3 & 6\% \\
+10.0-12.0 & 2\% \\
 \hline
-12.0-16.0 & X & 3 & 4\% \\
+12.0-16.0 & 2\% \\
 \hline
-16.0-24.0 & X & 3 & 4\% \\
+16.0-24.0 & 2\% \\
 \hline
-24.0-36.0 & X & 4 & 4\%\\
+24.0-36.0 & 2\%\\
 \hline
-36.0-50.0 & X & 4 & 2\% \\
-\hline
-  \end{tabular}
- \end{center}
- \caption{Systematic uncertainty estimated with the cut-variation study for the \Dzero, \Dplus, and \Dstar mesons in the 0--10\% centrality class.}
- \label{tab:D0DplusDstarCutSyst010}
-\end{table} 
-
-
-\begin{table}[htbp]
- \begin{center}
-  \begin{tabular}{|c|c|c|c|}
-\hline
-\pt ($\GeV/c$) &  \Dzero & \Dplus & \Dstar \\
-\hline
-1.0-1.5 & X & - & -\\
-\hline
-1.5-2.0 & X & - & -\\
-\hline
-2.0-2.5 & X & 7 & 18\% \\
-\hline
-2.5-3.0 & X & 5 & 6\% \\
-\hline
-3.0-3.5 & X & 5 & 6\% \\
-\hline
-3.5-4.0 & X & 4 & 6\% \\
-\hline
-4.0-4.5 & X & 4 & 6\% \\
-\hline
-4.5-5.0 & X & 4 & 6\% \\
-\hline
-5.0-5.5 & X & 4 & 6\% \\
-\hline
-5.5-6.0 & X & 4 & 6\% \\
-\hline
-6.0-6.5 & X & 2 & 6\% \\
-\hline
-6.5-7.0 & X & 2 & 6\% \\
-\hline
-7.0-7.5 & X & 2 & 6\% \\
-\hline
-7.5-8.0 & X & 2 & 6\% \\
-\hline
-8.0-9.0 & X & 2 & 6\% \\
-\hline
-9.0-10.0 & X & 2 & 2\% \\
-\hline
-10.0-12.0 & X & 2 & 0 \\
-\hline
-12.0-16.0 & X & 2 & 0 \\
-\hline
-16.0-24.0 & X & 2 & 0 \\
-\hline
-24.0-36.0 & X & 4 & 0 \\
-\hline
-36.0-50.0 & X & 6 & -\\
+36.0-50.0 & 2\% \\
 \hline
   \end{tabular}
  \end{center}
- \caption{Systematic uncertainty estimated with the cut-variation study for the \Dzero, \Dplus, and \Dstar mesons in the 30--50\% centrality class.}
- \label{tab:D0DplusDstarCutSyst3050}
+ \caption{Systematic uncertainty estimated with the cut-variation study.}
+ \label{tab:DstarCutSyst010}
 \end{table} 
 
 
 
-
-%======= Dstar =======
+%====== Dstar =======
 \begin{figure}[tb]
 \begin{center}
 \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/signal-cut-variation.pdf}
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/signal-ratio-cut-variation.pdf}
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/prompt-ratio-cut-variation.pdf} % signal_ratio_010cc_cutVariation.pdf
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-cut-var-v2.pdf}
-\caption{Variations of raw yield, prompt  efficiency, and corrected yield obtained with the cut-variation study for the \Dstar mesons in the 0--10\% centrality class.}
+\caption{Variations of raw yield, prompt  efficiency, and corrected yield obtained with the cut-variation.}
 \label{fig:DstarCutVar010}
 \end{center}
 \end{figure}
