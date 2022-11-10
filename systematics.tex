@@ -14,9 +14,9 @@ The systematic uncertainty on the raw yield extraction was evaluated in each \pt
 \end{itemize}  
 
 In addition bin counting at 3$\sigma$ was tested, and fixing the Gaussian sigma to the one extracted from the MC simulation and the mean of the Gaussian function to the PDG value of the \Dstar mass. The fits which did not converge or had $\chi^2$/$ndf> $ 3.0 were rejected and not considered in the evaluation of the systematic uncertainty.  In addition, the results obtained with the fitting technique were compared to those obtained by counting the entries in the invariant mass histogram after subtracting the background counts calculated from the background fit function. Also for this check, a multiple trial approach was used. 
-The results are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYieldSyst010_2}, \ref{fig:DstarYieldSyst010_3}, \ref{fig:DstarYieldSyst010_4}, and \ref{fig:DstarYieldSyst010_5}. 
+The results of the multiple trial approach are shown in figure~\ref{fig:DstarYieldSyst010_1}, \ref{fig:DstarYieldSyst010_2}, \ref{fig:DstarYieldSyst010_3}, \ref{fig:DstarYieldSyst010_4}, and \ref{fig:DstarYieldSyst010_5}. 
 
-For the first two \pt bins, some checks were performed to investigate the background fit function used in the trial, PowerLaw and Power Law $\times$ Exponential function. All the checks can be seen in figures \ref{fig:DstarYield_stdbkg}, \ref{fig:DstarYield_stdbkg_residual}, \ref{fig:DstarYield_Powerbkg}, \ref{fig:DstarYield_residual_power}, and \ref{fig:DstarYieldSyst010_33}. For \pt bin 1-1.5 GeV/$c$, the Power Law and Power Law $\times$ Exponential background function doesn't describe the invariant mass distribution. For \pt bin 1.5-2 GeV/$c$, the PowerLaw function leads to significantly larger widths. The numerical values of the systematic on yield extraction are reported in Tables~\ref{tab:DstarYieldSyst010_2}.% So that the systematic is smoothed down to 10%.
+For the first two \pt bins, some checks were performed to investigate the background fit function used in the trial, power law and power law$\times$exponential function. All the checks can be seen in figures \ref{fig:DstarYield_stdbkg}, \ref{fig:DstarYield_stdbkg_residual}, \ref{fig:DstarYield_Powerbkg}, \ref{fig:DstarYield_residual_power}, and \ref{fig:DstarYieldSyst010_33}. For \pt bin 1-1.5 GeV/$c$, the power law and power law$\times$exponential background function doesn't describe well the invariant mass distribution. For \pt bin 1.5-2 GeV/$c$, the power law function leads to significantly larger widths. The numerical values of the systematic on yield extraction are reported in Tables~\ref{tab:DstarYieldSyst010_2}.% So that the systematic is smoothed down to 10%.
 
  
 %In addition, all the fits were repeated with the sigma of the Gaussian function fixed to the values obtained from the MC
@@ -59,14 +59,11 @@ Systematic values & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% & 2\% & 2\% & 2\% \\
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_1-4GeV.png} 
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_4-7GeV.png}
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_7-16GeV.png}
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_16-50GeV.png} 
-%\includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_3-3.eps}
-%\includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_3-4.eps}
-%\includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_4-4.eps}
-\caption{\Dstar signal extraction using standard background fit function.}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_1-4GeV.png} 
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_4-7GeV.png}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_7-16GeV.png}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_stdBkg_16-50GeV-v2.png} % Mass_Spectra_stdBkg_16-50GeV-v2.png 
+\caption{\Dstar signal extraction using standard background fit function, power law$\times$exponential.}
 \label{fig:DstarYield_stdbkg}
 \end{center}
 \end{figure}
@@ -110,14 +107,11 @@ Systematic values & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% & 2\% & 2\% & 2\% \\
 
 \begin{figure}[!h]
 \begin{center}
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_1-4GeV.png} 
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_4-7GeV.png}
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_7-16GeV.png}
-\includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_16-50GeV.png} 
-%\includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_3-3.eps}
-%\includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_3-4.eps}
-%\includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_4-4.eps}
-\caption{\Dstar signal extraction using Power fit function for background.}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_1-4GeV.png} 
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_4-7GeV.png}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_7-16GeV.png}
+\includegraphics[width=1\textwidth]{figures/Dstar/pp13TeV/multi_trial/Mass_Spectra_PowerFuncBkg_16-50GeV-v2.png} 
+\caption{\Dstar signal extraction using a power fit function for background.}
 \label{fig:DstarYield_Powerbkg}
 \end{center}
 \end{figure}
@@ -152,7 +146,7 @@ Systematic values & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% & 2\% & 2\% & 2\% \\
 \includegraphics[width=0.3\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_Pow_bkg_func_24-36GeV.png}
 \includegraphics[width=0.3\textwidth]{figures/Dstar/pp13TeV/multi_trial/residual_plot_Pow_bkg_func_36-50GeV.png} 
 
-\caption{Residual plots using Power fit function for background.}
+\caption{Residual plots using power fit function for background shape.}
 \label{fig:DstarYield_residual_power}
 \end{center}
 \end{figure}
@@ -236,18 +230,11 @@ Systematic values & 2\% & 2\% & 2\% & 2\% & 2\%& 2\% & 2\% & 2\% & 2\% & 2\% \\
 \includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/multi_bin_bkg5alt_1dot5-2GeV.png}
 \includegraphics[width=0.7\textwidth]{figures/Dstar/pp13TeV/multi_trial/multi_bin_bkg5std_1dot5-2GeV.png}
 %\includegraphics[width=0.5\textwidth]{figures/Dstar/pp13TeV/multi_trial/MultiFit_bkg5_36-50.eps}
-\caption{Yield extration for \pt 1-2 GeV/$c$ tested with only one background function.}
+\caption{Yield extration for transverse momentum range 1 $<$ \pt $<$ 2 GeV/$c$ tested with only one background function for each \pt bin, 1-1.5 GeV/$c$ and 1.5-2 GeV/$c$.}
 \label{fig:DstarYieldSyst010_33}
 \end{center}
 \end{figure}
-
-
-
 %======= Dstar 0-10======= multi-trial ===========
-
-
-
-
 
 
 
@@ -271,7 +258,7 @@ repeating the analysis varying the applied selection criteria.
 %per variable basis, reconstructing the yields, comparing them to the yields obtained with a reference set of
 %cuts and looking for possible trends/biases of the reconstructed yield as a function of the cut strength. The result of this study for each \pt bin is shown n Figs.~\ref{fig:DsCutSyst010_1} and~\ref{fig:DsCutSyst010_1}, where the variations of the raw yield, prompt and feed-down \Dsubs efficiency, significance, signal-to-background ratio, and corrected yield are plotted as a function of the cut set tested. Finally the distribution of the variation of the corrected yield is shown. All the trials for which the extracted yield had a significance larger than 3 and a variation of the efficiency larger than 1\% were taken into account. The systematic uncertainty was assigned considering the rms and the deviation from unity of these distributions. The values are reported in Table~\ref{tab:DsCutSyst010}. 
 
-The systematic scan for \Dstar -meson from loose to tight cuts was done by varying the variables: DCA, d$_0$ pion and d$_0$ kaon, d0$\times$d0, cosine$\theta$ point, and normalised decay length. The result of this study is shown in figure~\ref{fig:DstarCutVar010}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested. The systematic values are reported in Table~\ref{tab:DstarCutSyst010}.
+The systematic scan for \Dstar -meson from loose to tight cuts was done by varying the variables: DCA, d$_0$ pion and d$_0$ kaon, d$^{\rm K}_0 \times$d$^{\pi}_0$, cosine$\theta$ point, and normalised decay length. The result of this study is shown in figure~\ref{fig:DstarCutVar010}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested. The systematic values are reported in Table~\ref{tab:DstarCutSyst010}.
 
 %For the \Dplus meson, a systematic scan from loose to tight cuts was done by varying the variables. The result of this study is shown in Figs.~\ref{fig:DplusCutVar010} and ~\ref{fig:DplusCutVar3050}, where the variation of the rawyield, prompt efficiency, and corrected yield ratio are plotted as a function of the cut set tested.
 
@@ -340,7 +327,7 @@ The systematic scan for \Dstar -meson from loose to tight cuts was done by varyi
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/signal-ratio-cut-variation.pdf}
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/prompt-ratio-cut-variation.pdf} % signal_ratio_010cc_cutVariation.pdf
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-cut-var-v2.pdf}
-\caption{Variations of raw yield, prompt  efficiency, and corrected yield obtained with the cut-variation.}
+\caption{Variations of raw yield (the first two figures from top), prompt  efficiency, and corrected yield (bottom) obtained with the cut-variation.}
 \label{fig:DstarCutVar010}
 \end{center}
 \end{figure}
@@ -405,7 +392,7 @@ The systematic eﬀect due to the particle identification (PID) selections was s
 \begin{center}
 \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/rawyield_ratio_PID_noPID-new.pdf}
  \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/prompt_PID_noPID_ratio-v3.pdf}
- \caption{PID systematic \Dstar meson.}
+ \caption{Ratio of raw yield (top) and prompt efficiency (bottom) obtained with and without PID.}
 \label{fig:PIDsyst}
 \end{center}
 \end{figure}
@@ -415,7 +402,7 @@ The systematic eﬀect due to the particle identification (PID) selections was s
 \begin{center} 
  \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/cross-section-comaprison-PID-noPID.pdf}
  \includegraphics[width=0.9\textwidth]{figures/Dstar/pp13TeV/cross-section-ratio_PID_noPID-updated.pdf}
-\caption{PID systematic \Dstar meson.}
+\caption{Comparison of \Dstar cross sections obtained with and without PID.}
 \label{fig:PIDsyst2}
 \end{center}
 \end{figure}
@@ -439,15 +426,17 @@ The ITS-TPC matching efficiency was computed as the number of tracks successfull
 where $\epsilon_{\rm primary}({\rm MC})$ and $\epsilon_{\rm secondary}({\rm MC})$ are the ITS-TPC matching efficiencies for primary and secondary particles, which are determined via fits to the $d_0^{xy}$ distributions of the tracks. 
 
 In addition, it was checked if a discrepancy between the efficiency of the track-quality selections in data and in the MC simulation need to be considered. For this purpose, the D-meson cross section was re-evaluated with three alternative track-quality selection criteria, which include the selection of tracks with (i) a number TPC crossed rows larger than $120-5/(\pt~[\GeV/c])$, (ii)  the number of TPC clusters at least 0.65 times the number of TPC crossed rows and (iii) a ratio of crossed rows over findable clusters in the TPC larger than 0.9 (being the default 0.8). These variations are shown in figure~\ref{fig:TrackVariations}.
-The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 2\% for the soft pion track. Therefore a value equal to 3\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency for the \Dstar -meson. The systematic uncertainties are shown in figure~\ref{fig:DzeroTrackSyst}. The systematic values are reported in Table~\ref{tab:DstarTrackingSyst}.
+The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 2\% for the soft pion track. The systematic uncertainties are shown in figure~\ref{fig:DzeroTrackSyst}. The systematic values are reported in Table~\ref{tab:DstarTrackingSyst}.
+
+% Therefore a value equal to 3\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency for the \Dstar -meson
 
 
 %, therefore a value equal to 0.5\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency. The systematic uncertainties obtained for \Dsubs and \Dzero mesons in the 0--10\% centrality class are shown in Figs.~\ref{fig:DsTrackSyst} and~\ref{fig:DzeroTrackSyst}.
 
 \begin{figure}[tb]
 \begin{center}
- \includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-tracking-Dstar-D0-single-track.pdf}
- \includegraphics[width=0.65\textwidth]{figures/Dstar/pp13TeV/tracking-soft-pion-ratio-cross-section.pdf}
+ \includegraphics[width=0.6\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-tracking-Dstar-D0-single-track.pdf}
+ \includegraphics[width=0.6\textwidth]{figures/Dstar/pp13TeV/tracking-soft-pion-ratio-cross-section.pdf}
 \caption{Comparison of \Dstar corrected yield measured obtained with different TPC track-quality criteria.}
 \label{fig:TrackVariations}
 \end{center}
@@ -459,10 +448,12 @@ The variation of the cross section was observed to be around 1.0\% for \Dzero (t
 \begin{figure}[tb]
 \begin{center}
  \includegraphics[width=0.55\textwidth]{figures/Dstar/pp13TeV/Dstar-ME-eff-final.pdf}
-\caption{Systematic uncertainty on tracking efficiency.}
+\caption{Top: scatter plot of daughter \pt versus \Dstar -meson \pt. Bottom: final systematic uncertainties propagated at \Dstar -meson level after weighting for daughter’s kinematics.}
 \label{fig:DzeroTrackSyst}
 \end{center}
 \end{figure}
+
+% Top: scatter plot of daughter \pt versus \Dstar -meson \pt. Bottom: final systematic uncertainties propagated at \Dstar -meson level after weighting for daughter’s kinematics.
 
 
 \begin{table}[htbp]
