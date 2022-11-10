@@ -9,7 +9,7 @@
  
 \subsection{Data sample}
 \label{sec:data_sample}
-The analyses note will discuss the production cross-section of \Dstar -meson in pp collisions at \s 13 TeV. The data samples used for this analysis are pp data at \s 13 TeV combined collected in 2016, 2017, and 2018. The minimum bias triggered data of data samples, LHC2016$\textunderscore$deghjop, LHC2016$\textunderscore$kl, LHC2017$\textunderscore$cefhijklmor, and LHC2018$\textunderscore$bdefghijklmnop are used for this analysis. The run numbers were used in the analysis, as selected after quality assurance, are reported below:
+The analyses note will discuss the production cross-section of \Dstar -meson in pp collisions at \s 13 TeV. The data samples used for this analysis are pp data at \s 13 TeV collected in 2016, 2017, and 2018. The minimum bias triggered data of data samples, LHC2016$\textunderscore$deghjop, LHC2016$\textunderscore$kl, LHC2017$\textunderscore$cefhijklmor, and LHC2018$\textunderscore$bdefghijklmnop are used for this analysis. The run numbers were used in the analysis, as selected after quality assurance, are reported below:
  
 %The run list used for this analysis, as selected after quality assurance checks, is as follows:
 
@@ -82,7 +82,10 @@ The analyses note will discuss the production cross-section of \Dstar -meson in 
 
 \subsection{Monte Carlo sample}
 \label{sec:mc_sample}
-The Monte-Carlo (MC) sample used for the corrections is anchored to the run numbers reported above and generated with the same detector configurations as the data productions. In particular three production cycles are used  \texttt{LHC20f4a$\textunderscore$2018$\textunderscore$P8}, \texttt{LHC20f4b$\textunderscore$2017$\textunderscore$P8}, and \texttt{LHC20f4c$\textunderscore$2016$\textunderscore$P8}. The Monte Carlo sample are generated with HIJING + HF Pythia8 events. Each pp event was required to contain at least one charm or beauty quark-antiquark pair. The following heavy-flavour hadrons are forced to decay via their hadronic decay channels. The run numbers used for the MC are the same as stated above for LHC2016, LHC2017, and LHC2018 samples.    %A QA was performed to assure the goodness of the AODs in term of track cuts and particle identification (see JIRA ticket ALIROOT-8207).
+The Monte-Carlo (MC) sample used for the corrections is anchored to the run numbers reported above and generated with the same detector configurations as the data productions. In particular three production cycles are used  \texttt{LHC20f4a$\textunderscore$2018$\textunderscore$P8}, \texttt{LHC20f4b$\textunderscore$2017$\textunderscore$P8}, and \texttt{LHC20f4c$\textunderscore$2016$\textunderscore$P8}. The Monte Carlo sample are generated with PYTHIA8 Perugia-2011 tune. Each pp event was required to contain at least one charm or beauty quark-antiquark pair. The following heavy-flavour hadrons are forced to decay via their hadronic decay channels. The run numbers used for the MC are the same as stated above for LHC2016, LHC2017, and LHC2018 samples.
+
+% PYTHIA6 with the Perugia-2011 tuning
+    %A QA was performed to assure the goodness of the AODs in term of track cuts and particle identification (see JIRA ticket ALIROOT-8207).
 
 % Monte Carlo production Pythia8, anchored to LHC16d,e,g,h,j,o,p (pp@13 TeV) minimum bias, with enriched HF signals. Charm hadron decays forced to hadronic channels. SPD updated SparseMaps and new WDF
 % Runs are taken from the DPG good run lists 'hadronPID' and, when available, 'hadronPID + incomplete TPC acceptance'. Good runs without TOF are included.
