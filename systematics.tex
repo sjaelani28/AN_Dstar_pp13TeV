@@ -1,3 +1,5 @@
+\linenumbers
+
 \clearpage
 \section{Systematic uncertainties}
 
@@ -337,8 +339,10 @@ The systematic scan for \Dstar -meson from loose to tight cuts was done by varyi
 \clearpage
 \subsection{Generated \pt shape}
 \label{sec:gen_pt_syst}
-Another source of systematic we investigated is the one arising from the D meson \pt shape assumed in the Monte Carlo used for corrections. In our simulation the D mesons are folded in the HIJING event using PYTHIA and as a result the \pt shape of the D mesons can be biased leading to an effect in the final efficiency used for corrections. In order to check the stability of our efficiencies against the change in \pt shape and to define a systematic uncertainty it was decided to implement several set of weights. 
+Another source of systematic we investigated is the one arising from the D meson \pt shape assumed in the Monte Carlo used for corrections. In our simulation, the D mesons are generated using PYTHIA8 and as a result the \pt shape of the D mesons can be biased leading to an effect in the final efficiency used for corrections. In order to check the stability of our efficiencies against the change in \pt shape and to define a systematic uncertainty it was decided to implement several set of weights. 
 
+
+%are generated with PYTHIA8 Monash-13 tune
 %The \pt shapes 
 
 %For the \Dsubs meson, the \pt shapes provided by different models were taken into account. For the default value, the \pt shape of TAMU was considered, since it implements both the in-medium energy loss and the enhanced \Dsubs production due to the hadronisation via coalescence in a strange-rich medium. For the variation, the shapes of PHSD, Catania models, which also provide predictions for the \Dsubs mesons were considered. In addition, the MC@sHQ model for non-strange D mesons was considered to take into account a scenario in which the \Dsubs is not enhanced and as extreme case FONLL that assumes no suppression. 
@@ -373,10 +377,10 @@ The systematic uncertainty due to a possible diﬀerence between the real and si
 
 
 
-\clearpage
+%\clearpage
 \subsection{PID efficiency}
 
-The systematic eﬀect due to the particle identification (PID) selections was studied by repeating the analysis without PID selection. The uncertainty was evaluated by comparing the corrected yield ratio obtained with and without PID, which is shown in figure~\ref{fig:PIDsyst} and \ref{fig:PIDsyst2}. All the points are compatible with unity, most of them at better then 1$\sigma$ level. Therefore, no systematic uncertainty was assigned to PID eﬃciency.
+The systematic eﬀect due to the particle identification (PID) selections was studied by repeating the analysis without PID selection. The uncertainty was evaluated by comparing the corrected yield ratio obtained with and without PID, which is shown in figure~\ref{fig:PIDsyst} and \ref{fig:PIDsyst2}. All the points are compatible with unity, most of them at better then 1$\sigma$ level. Therefore, no systematic uncertainty was assigned to PID efficiency.
 
 
 
@@ -388,10 +392,10 @@ The systematic eﬀect due to the particle identification (PID) selections was s
 %\end{equation}
 %where $X$ stands for a given mass hypothesis, i.e. pion or kaon. This procedure was performed in intervals of track momentum and pseudorapidity. Figures~\ref{fig:NsigmaTPCuncorr18q} and~\ref{fig:NsigmaTPCuncorr18r} show the $N_{\sigma}^{\rm TPC}$ distributions as a function of pseudorapidity before the post calibration for the LHC18q and LHC18r periods, respectively, while Fig.~\ref{fig:NsigmaTPCcorr} after the post-calibration for both the periods for the 0--10\% centrality class. Samples of pions, kaons and protons independent of the one used to compute the correction were used to cross check the goodness of the post-calibration. The mean value of the distribution before the correction is shifted towards negative values, and shows a clear $\eta$-dependence. The corrected distribution is constantly centred at zero as a function of $\eta$. The residual deviation from unity in the kaon and proton distributions is due to residual contamination in the samples.
 
-\begin{figure}[tb]
+\begin{figure}[!b]
 \begin{center}
-\includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/rawyield_ratio_PID_noPID-new.pdf}
- \includegraphics[width=0.8\textwidth]{figures/Dstar/pp13TeV/prompt_PID_noPID_ratio-v3.pdf}
+\includegraphics[width=0.63\textwidth]{figures/Dstar/pp13TeV/rawyield_ratio_PID_noPID-new.pdf}
+ \includegraphics[width=0.63\textwidth]{figures/Dstar/pp13TeV/prompt_PID_noPID_ratio-v3.pdf}
  \caption{Ratio of raw yield (top) and prompt efficiency (bottom) obtained with and without PID.}
 \label{fig:PIDsyst}
 \end{center}
@@ -417,35 +421,43 @@ The systematic eﬀect due to the particle identification (PID) selections was s
 \clearpage
 \subsection{Track reconstruction efficiency}
 
-The systematic uncertainty due to the track-reconstruction efficiency includes the contributions of the track-finding procedure in the TPC detector and prolongation in the ITS detector, and the track-quality selections. 
+The systematic uncertainty due to the track-reconstruction efficiency includes the contributions of the track-finding procedure in the TPC detector and prolongation in the ITS detector, and the track-quality selections. It was estimated with the following procedure: the D-meson cross section was re-evaluated with three alternative track-quality selection criteria, which include the selection of tracks with (i) a number TPC crossed rows larger than $120-5/(\pt~[\GeV/c])$, (ii) the number of TPC clusters at least 0.65 times the number of TPC crossed rows and (iii) a ratio of crossed rows over findable clusters in the TPC larger than 0.9 (being the default 0.8). These variations are shown in figure~\ref{fig:TrackVariations}.
+The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 2\% for the soft pion track. 
 
-The ITS-TPC matching efficiency was computed as the number of tracks successfully fitted with the Kalman filter in the TPC and ITS, with at least one hit in the SPD layers, divided by the number of reconstructed tracks successfully fitted in the TPC. The systematic uncertainty on its determination arises from discrepancies in the tracking performance between data and the MC simulation. The ITS-TPC matching efficiency is different for particles produced in the collision, including strong decays and weak decays of charm and beauty hadrons, which are considered as primary particles in this study, and secondary particles (i.e. particles produced in the interactions with the material or in decays of strange hadrons). The HIJING event generator and the GEANT3 transport package do not reproduce the relative abundance of primary and secondary particles, therefore data-driven corrections for the fraction of primary particles ($f_{\rm primary}$) were used to weight the MC simulation and obtain the corrected inclusive MC efficiency ($\epsilon_{\rm inclusive}({\rm MC})$), which is computed as:
-\begin{equation}
-	\epsilon_{\rm inclusive}({\rm MC}) = f_{\rm primary}\cdot\epsilon_{\rm primary}({\rm MC})+(1-f_{\rm primary})\cdot\epsilon_{\rm secondary}({\rm MC}),
-\end{equation}
-where $\epsilon_{\rm primary}({\rm MC})$ and $\epsilon_{\rm secondary}({\rm MC})$ are the ITS-TPC matching efficiencies for primary and secondary particles, which are determined via fits to the $d_0^{xy}$ distributions of the tracks. 
+\begin{figure}[!b]
+\begin{center}
+ \includegraphics[width=0.85\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-tracking-Dstar-D0-single-track.pdf}
+ \includegraphics[width=0.85\textwidth]{figures/Dstar/pp13TeV/tracking-soft-pion-ratio-cross-section.pdf}
+\caption{Comparison of \Dstar corrected yield measured obtained with different TPC track-quality criteria.}
+\label{fig:TrackVariations}
+\end{center}
+\end{figure}
 
-In addition, it was checked if a discrepancy between the efficiency of the track-quality selections in data and in the MC simulation need to be considered. For this purpose, the D-meson cross section was re-evaluated with three alternative track-quality selection criteria, which include the selection of tracks with (i) a number TPC crossed rows larger than $120-5/(\pt~[\GeV/c])$, (ii)  the number of TPC clusters at least 0.65 times the number of TPC crossed rows and (iii) a ratio of crossed rows over findable clusters in the TPC larger than 0.9 (being the default 0.8). These variations are shown in figure~\ref{fig:TrackVariations}.
-The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 2\% for the soft pion track. The systematic uncertainties are shown in figure~\ref{fig:DzeroTrackSyst}. The systematic values are reported in Table~\ref{tab:DstarTrackingSyst}.
+The ITS-TPC matching efficiency was computed as the number of tracks successfully fitted with the Kalman filter in the TPC and ITS, with at least one hit in the SPD layers, divided by the number of reconstructed tracks successfully fitted in the TPC. The systematic uncertainty on its determination arises from discrepancies in the tracking performance between data and the MC simulation. The ITS-TPC matching efficiency is different for particles produced in the collision, including strong decays and weak decays of charm and beauty hadrons, which are considered as primary particles in this study, and secondary particles (i.e. particles produced in the interactions with the material or in decays of strange hadrons). A detailed description of this calculation can be found in \cite{Ana:537}. To calculate the total systematics, the tracking and ITS-TPC matching uncertainties at track level are propagated to the candidate level. The systematic uncertainties are shown in figure~\ref{fig:DzeroTrackSyst}. The systematic values assigned for track reconstruction efficiency are reported in Table~\ref{tab:DstarTrackingSyst}.
+
+%The TPC-ITS track matching efficiency is defined as the fraction of tracks with clusters in both ITS and TPC over the total number of tracks with clusters in TPC. Systematic uncertainty on its determination arises from discrepancies in efficiency between data and Monte Carlo. Matching efficiency for primary racks is expected to be higher than for secondary tracks (originating from strangeness decay, thus with secondary vertices likely to be out of SPD) or tracks arising from interaction with material. If the fractions of primary and secondary tracks are different in data and in Monte Carlo, this could lead to a wrong estimation of systematic uncertainty in the matching. Hence, the real fraction of track types in data is evaluated, and used them to re-weight respective MC efficiencies to obtain a corrected inclusive MC efficiency.
+
+%The latter will be compared with efficiency on data to extract the systematic uncertainty. A detailed description of this calculation can be found in [11]. After propagation to D candidates, it appears that the systematic uncertainty on the ITS-TPC matching efficiency is 1% up to 2 GeV/c and 2% above
+
+
+
+
+
+
+%In addition, it was checked if a discrepancy between the efficiency of the track-quality selections in data and in the MC simulation need to be considered. For this purpose, the D-meson cross section was re-evaluated with three alternative track-quality selection criteria, which include the selection of tracks with (i) a number TPC crossed rows larger than $120-5/(\pt~[\GeV/c])$, (ii) the number of TPC clusters at least 0.65 times the number of TPC crossed rows and (iii) a ratio of crossed rows over findable clusters in the TPC larger than 0.9 (being the default 0.8). These variations are shown in figure~\ref{fig:TrackVariations}.
+%The variation of the cross section was observed to be around 1.0\% for \Dzero (two-body decay) and 2\% for the soft pion track. The systematic uncertainties are shown in figure~\ref{fig:DzeroTrackSyst}. The systematic values are reported in Table~\ref{tab:DstarTrackingSyst}.
 
 % Therefore a value equal to 3\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency for the \Dstar -meson
 
 
 %, therefore a value equal to 0.5\% was added to the per-track systematic uncertainty estimated for the ITS-TPC matching efficiency. The systematic uncertainties obtained for \Dsubs and \Dzero mesons in the 0--10\% centrality class are shown in Figs.~\ref{fig:DsTrackSyst} and~\ref{fig:DzeroTrackSyst}.
 
-\begin{figure}[tb]
-\begin{center}
- \includegraphics[width=0.6\textwidth]{figures/Dstar/pp13TeV/corrected-yield-ratio-tracking-Dstar-D0-single-track.pdf}
- \includegraphics[width=0.6\textwidth]{figures/Dstar/pp13TeV/tracking-soft-pion-ratio-cross-section.pdf}
-\caption{Comparison of \Dstar corrected yield measured obtained with different TPC track-quality criteria.}
-\label{fig:TrackVariations}
-\end{center}
-\end{figure}
+
 
 %Finally, the $\pt$-dependent per-track systematic uncertainty was propagated to the \Dsubs mesons via the kinematics of the \Dsubs daughter tracks, similarly to the procedure explained in the previous Section for the PID uncertainty. The systematic uncertainties obtained for \Dsubs and \Dzero mesons in the 0--10\% centrality class are shown in Figs.~\ref{fig:DsTrackSyst} and~\ref{fig:DzeroTrackSyst}.
 
 
-\begin{figure}[tb]
+\begin{figure}[htbp]
 \begin{center}
  \includegraphics[width=0.55\textwidth]{figures/Dstar/pp13TeV/Dstar-ME-eff-final.pdf}
 \caption{Top: scatter plot of daughter \pt versus \Dstar -meson \pt. Bottom: final systematic uncertainties propagated at \Dstar -meson level after weighting for daughter’s kinematics.}

@@ -1,3 +1,5 @@
+\linenumbers
+
 \section{Feed-down subtraction}
 %The methods for B feed-down subtraction
 %As described in Sec.~\ref{sec:eff}, the prompt D meson production yields ${\rmd}N/{\rm d}\pt$ in Pb--Pb 
@@ -5,14 +7,8 @@
 
 The feed-down contribution was estimated using 
 the beauty production cross section from the FONLL calculation,
-the B$\rightarrow$D decay kinematics from the EvtGen package,
-and the Monte Carlo efficiencies for feed-down D mesons. 
-%For Pb--Pb collisions, 
-%the FONLL feed-down cross section in pp at $\sqrt{s}=5.02~\TeV$ 
-%was scaled by the average nuclear overlap function $\langle \TAA \rangle$ in
-%each centrality class.
-Thus, omitting for brevity the symbol of the $\pt$-dependence $(\pt)$, 
-the fraction of prompt D mesons reads:
+the B$\rightarrow$D decay kinematics are modeled with PYTHIA 8,
+and the Monte Carlo efficiencies for feed-down D mesons. Thus, omitting for brevity the symbol of the $\pt$-dependence $(\pt)$, the fraction of prompt D mesons reads:
 \begin{equation}
  \label{eq:fcNbMethod}
  \begin{split}
@@ -26,9 +22,15 @@ the fraction of prompt D mesons reads:
 where $({\rm Acc}\times\epsilon)_{{\rm feed-down}}$ is the 
 acceptance-times-efficiency for feed-down D mesons and the factor 2 at the denominator
 comes for counting both particle and antiparticle
-are combined while in FONLL not. The variation of the parameters used for the FONLL B predictions is taken into account for the evaluation of the systematic uncertainties related to the feed-down D-meson subtraction.
+are combined while in FONLL not. The variation of the parameters used for the FONLL B predictions is taken into account for the evaluation of the systematic uncertainties related to the feed-down D-meson subtraction. The fractions of prompt \Dstar , estimated via the $Nb$ method is performed by varying the parameters used in the FONLL B predictions, are shown in figure~\ref{fig:Dstarfeeddown_cent} and the systematic values are reported in~\ref{fig:Dstarfeeddown_cent2}.
 
-The fractions of prompt \Dstar , estimated via the $Nb$ method is performed by varying the parameters used in the FONLL B predictions, are shown in figure~\ref{fig:Dstarfeeddown_cent}.
+
+ %are modeled with PYTHIA 8
+%For Pb--Pb collisions, 
+%the FONLL feed-down cross section in pp at $\sqrt{s}=5.02~\TeV$ 
+%was scaled by the average nuclear overlap function $\langle \TAA \rangle$ in
+%each centrality class.
+
 
 %The systematic uncertainties on the prompt fraction of \Dstar -meson $f_{\rm prompt}$ , estimated via the $Nb$ method is performed by varying the parameters used in the FONLL B predictions, are shown in figure \ref{fig:Dstarfeeddown_cent}.
 
@@ -46,19 +48,19 @@ The fractions of prompt \Dstar , estimated via the $Nb$ method is performed by v
 %In addition, to estimate the systematic uncertainty, the perturbative uncertainty on the FONLL beauty production cross section was considered, by varying the b quark mass and the factorization and renormalization scales as suggested in~\cite{Acharya:2019mgn}. 
 
 %======= Dstar =====
-\begin{figure}[tb]
+\begin{figure}[!b]
 \begin{center}
- \includegraphics[width=0.75\textwidth]{figures/Dstar/pp13TeV/feed-down-syst-Dstar.pdf}
+ \includegraphics[width=0.85\textwidth]{figures/Dstar/pp13TeV/feed-down-syst-Dstar.pdf}
 \caption{Fraction of prompt \Dstar estimated using the FONLL-based approach.}
 \label{fig:Dstarfeeddown_cent}
 \end{center}
 \end{figure}
 
-\begin{figure}[tb]
+\begin{figure}[!b]
 \begin{center}
- \includegraphics[width=0.95\textwidth]{figures/Dstar/pp13TeV/prompt-fraction.png}
+ \includegraphics[width=1.0\textwidth]{figures/Dstar/pp13TeV/prompt-fraction.png}
 \caption{Feed-down systematics.}
-\label{fig:Dstarfeeddown_cent}
+\label{fig:Dstarfeeddown_cent2}
 \end{center}
 \end{figure}
 % prompt-fraction.png
